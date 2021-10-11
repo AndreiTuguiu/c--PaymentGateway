@@ -1,0 +1,189 @@
+{
+  "version": 3,
+  "targets": {
+    "net5.0": {
+      "Abstractions/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/Abstractions.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/Abstractions.dll": {}
+        }
+      },
+      "ExternalService/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Abstractions": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ExternalService.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ExternalService.dll": {}
+        }
+      },
+      "PaymentGateway.Application/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "Abstractions": "1.0.0",
+          "PaymentGateway.Data": "1.0.0",
+          "PaymentGateway.PublishedLanguage": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/PaymentGateway.Application.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PaymentGateway.Application.dll": {}
+        }
+      },
+      "PaymentGateway.Data/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "dependencies": {
+          "PaymentGateway.Models": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/PaymentGateway.Data.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PaymentGateway.Data.dll": {}
+        }
+      },
+      "PaymentGateway.Models/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/PaymentGateway.Models.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PaymentGateway.Models.dll": {}
+        }
+      },
+      "PaymentGateway.PublishedLanguage/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v5.0",
+        "compile": {
+          "bin/placeholder/PaymentGateway.PublishedLanguage.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/PaymentGateway.PublishedLanguage.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Abstractions/1.0.0": {
+      "type": "project",
+      "path": "../Abstractions/Abstractions.csproj",
+      "msbuildProject": "../Abstractions/Abstractions.csproj"
+    },
+    "ExternalService/1.0.0": {
+      "type": "project",
+      "path": "../ExternalService/ExternalService.csproj",
+      "msbuildProject": "../ExternalService/ExternalService.csproj"
+    },
+    "PaymentGateway.Application/1.0.0": {
+      "type": "project",
+      "path": "../PaymentGateway.Application/PaymentGateway.Application.csproj",
+      "msbuildProject": "../PaymentGateway.Application/PaymentGateway.Application.csproj"
+    },
+    "PaymentGateway.Data/1.0.0": {
+      "type": "project",
+      "path": "../PaymentGateway.Data/PaymentGateway.Data.csproj",
+      "msbuildProject": "../PaymentGateway.Data/PaymentGateway.Data.csproj"
+    },
+    "PaymentGateway.Models/1.0.0": {
+      "type": "project",
+      "path": "../PaymentGateway.Models/PaymentGateway.Models.csproj",
+      "msbuildProject": "../PaymentGateway.Models/PaymentGateway.Models.csproj"
+    },
+    "PaymentGateway.PublishedLanguage/1.0.0": {
+      "type": "project",
+      "path": "../PaymentGateway.PublishLanguage/PaymentGateway.PublishedLanguage.csproj",
+      "msbuildProject": "../PaymentGateway.PublishLanguage/PaymentGateway.PublishedLanguage.csproj"
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net5.0": [
+      "ExternalService >= 1.0.0",
+      "PaymentGateway.Application >= 1.0.0",
+      "PaymentGateway.Models >= 1.0.0"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\andrei.tuguiu\\source\\repos\\PaymentGateway\\PaymentGateway\\PaymentGateway.csproj",
+      "projectName": "PaymentGateway",
+      "projectPath": "C:\\Users\\andrei.tuguiu\\source\\repos\\PaymentGateway\\PaymentGateway\\PaymentGateway.csproj",
+      "packagesPath": "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\andrei.tuguiu\\source\\repos\\PaymentGateway\\PaymentGateway\\obj\\",
+      "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\andrei.tuguiu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net5.0"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "projectReferences": {
+            "C:\\Users\\andrei.tuguiu\\source\\repos\\PaymentGateway\\ExternalService\\ExternalService.csproj": {
+              "projectPath": "C:\\Users\\andrei.tuguiu\\source\\repos\\PaymentGateway\\ExternalService\\ExternalService.csproj"
+            },
+            "C:\\Users\\andrei.tuguiu\\source\\repos\\PaymentGateway\\PaymentGateway.Application\\PaymentGateway.Application.csproj": {
+              "projectPath": "C:\\Users\\andrei.tuguiu\\source\\repos\\PaymentGateway\\PaymentGateway.Application\\PaymentGateway.Application.csproj"
+            },
+            "C:\\Users\\andrei.tuguiu\\source\\repos\\PaymentGateway\\PaymentGateway.Models\\PaymentGateway.Models.csproj": {
+              "projectPath": "C:\\Users\\andrei.tuguiu\\source\\repos\\PaymentGateway\\PaymentGateway.Models\\PaymentGateway.Models.csproj"
+            }
+          }
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      }
+    },
+    "frameworks": {
+      "net5.0": {
+        "targetAlias": "net5.0",
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}

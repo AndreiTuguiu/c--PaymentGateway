@@ -1,0 +1,12 @@
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\Abstractions\bin\Debug\net5.0\Abstractions.deps.json
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\Abstractions\bin\Debug\net5.0\Abstractions.dll
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\Abstractions\bin\Debug\net5.0\ref\Abstractions.dll
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\Abstractions\bin\Debug\net5.0\Abstractions.pdb
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\Abstractions\obj\Debug\net5.0\Abstractions.csproj.AssemblyReference.cache
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\Abstractions\obj\Debug\net5.0\Abstractions.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\Abstractions\obj\Debug\net5.0\Abstractions.AssemblyInfoInputs.cache
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\Abstractions\obj\Debug\net5.0\Abstractions.AssemblyInfo.cs
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\Abstractions\obj\Debug\net5.0\Abstractions.csproj.CoreCompileInputs.cache
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\Abstractions\obj\Debug\net5.0\Abstractions.dll
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\Abstractions\obj\Debug\net5.0\ref\Abstractions.dll
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\Abstractions\obj\Debug\net5.0\Abstractions.pdb
