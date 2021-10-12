@@ -27,3 +27,15 @@ C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway\bin\Debug\net5
 C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway\bin\Debug\net5.0\ExternalService.dll
 C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway\bin\Debug\net5.0\ExternalService.pdb
 C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway\obj\Debug\net5.0\PaymentGateway.csproj.CopyComplete
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway\bin\Debug\net5.0\Microsoft.Extensions.Configuration.dll
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway\bin\Debug\net5.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway\bin\Debug\net5.0\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway\bin\Debug\net5.0\Microsoft.Extensions.Configuration.EnvironmentVariables.dll
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway\bin\Debug\net5.0\Microsoft.Extensions.Configuration.FileExtensions.dll
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway\bin\Debug\net5.0\Microsoft.Extensions.Configuration.Json.dll
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway\bin\Debug\net5.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway\bin\Debug\net5.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway\bin\Debug\net5.0\Microsoft.Extensions.FileProviders.Physical.dll
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway\bin\Debug\net5.0\Microsoft.Extensions.FileSystemGlobbing.dll
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll

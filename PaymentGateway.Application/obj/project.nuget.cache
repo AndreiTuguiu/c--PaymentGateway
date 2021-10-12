@@ -1,8 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "sF44Ihw5zqiAiAnfV8Tm01MFNhSnyUAyhE+fRm3JV15fIAti0yeqVbS8nGr1QTssyEGfeO/DgYrcJ7o/pPixyw==",
+  "dgSpecHash": "dAhistetsRV2MoIF4IaSb86diHRfx3+v6+hcXNZVUKMK7VNKJoJRqCwe/DMZZ3NgG61b/fu7iacSt0SaKPcDYg==",
   "success": true,
   "projectFilePath": "C:\\Users\\andrei.tuguiu\\source\\repos\\PaymentGateway\\PaymentGateway.Application\\PaymentGateway.Application.csproj",
-  "expectedPackageFiles": [],
+  "expectedPackageFiles": [
+    "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\microsoft.extensions.configuration\\5.0.0\\microsoft.extensions.configuration.5.0.0.nupkg.sha512",
+    "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\microsoft.extensions.configuration.binder\\5.0.0\\microsoft.extensions.configuration.binder.5.0.0.nupkg.sha512",
+    "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\3.1.2\\microsoft.extensions.dependencyinjection.3.1.2.nupkg.sha512",
+    "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\3.1.2\\microsoft.extensions.dependencyinjection.abstractions.3.1.2.nupkg.sha512",
+    "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512"
+  ],
   "logs": []
 }

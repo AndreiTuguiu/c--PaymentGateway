@@ -13,6 +13,7 @@ namespace PaymentGateway.Application.WriteOperations
 {
     public class CreateProduct : IWriteOperation<CreateProductCommand>
     {
+        private readonly Database _database;
         public IEventSender eventSender;
         public CreateProduct(IEventSender eventSender)
         {
@@ -20,7 +21,7 @@ namespace PaymentGateway.Application.WriteOperations
         }
         public void PerformOperation(CreateProductCommand operation)
         {
-            Database database = Database.GetInstance();
+            
             Product product = new Product();
             product.ProductId = operation.ProductId;
             product.Name = operation.Name;
@@ -28,9 +29,9 @@ namespace PaymentGateway.Application.WriteOperations
             product.Currency = operation.Currency;
             product.Limit = operation.Limit;
 
-            database.Products.Add(product);
+            _database.Products.Add(product);
 
-            database.SaveChanges();
+            _database.SaveChanges();
 
             ProductCreated productCreated = new(product.Name, product.Value, product.Currency);
             eventSender.SendEvent(productCreated);

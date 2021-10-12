@@ -14,14 +14,15 @@ namespace PaymentGateway.Application.WriteOperations
     public class PurchaseProduct : IWriteOperation<PurchaseProductCommand>
     {
         public IEventSender eventSender;
+        private readonly Database _database;
         public PurchaseProduct(IEventSender eventSender)
         {
             this.eventSender = eventSender;
         }
         public void PerformOperation(PurchaseProductCommand operation)
         {
-            Database database = Database.GetInstance();
-            var account = database.Accounts.FirstOrDefault(x => x.AccountId == operation.AccountId);
+           
+            var account = _database.Accounts.FirstOrDefault(x => x.AccountId == operation.AccountId);
 
             if(account== null)
             {
@@ -29,7 +30,7 @@ namespace PaymentGateway.Application.WriteOperations
             }
             double totalValue;
             string currency;
-            var product = database.Products.FirstOrDefault(x => x.ProductId == operation.ProductId);
+            var product = _database.Products.FirstOrDefault(x => x.ProductId == operation.ProductId);
             if(product== null)
             {
                 throw new Exception("Product not found");
@@ -52,9 +53,9 @@ namespace PaymentGateway.Application.WriteOperations
             transaction.Currency = currency;
             transaction.Date = DateTime.Now;
             transaction.Type = TransactionType.PurchaseService;
-            transaction.TransactionId = database.Transactions.Count() + 1;
+            transaction.TransactionId = _database.Transactions.Count() + 1;
 
-            database.Transactions.Add(transaction);
+            _database.Transactions.Add(transaction);
 
             account.Balance -= totalValue;
 
@@ -63,9 +64,9 @@ namespace PaymentGateway.Application.WriteOperations
             pxt.ProductId = operation.ProductId;
             pxt.Quantity = operation.Quantity;
 
-            database.ProductXTransactions.Add(pxt);
+            _database.ProductXTransactions.Add(pxt);
 
-            database.SaveChanges();
+            _database.SaveChanges();
 
             ProductPurchased productPurchased = new(account.AccountId, pxt.ProductId, pxt.Quantity, totalValue);
             eventSender.SendEvent(productPurchased);

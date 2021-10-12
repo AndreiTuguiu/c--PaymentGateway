@@ -14,22 +14,22 @@ namespace PaymentGateway.Application.WriteOperations
     public class DepositMoney : IWriteOperation<DepositMoneyCommand>
     {
         public IEventSender eventSender;
-
+        private readonly Database _database;
         public DepositMoney(IEventSender eventSender)
         {
             this.eventSender = eventSender;
         }
         public void PerformOperation(DepositMoneyCommand operation)
         {
-            Database db = Database.GetInstance();
+            
             Account account;
             if (operation.AccountId.HasValue)
             {
-                account = db.Accounts.FirstOrDefault(x => x.AccountId == operation.AccountId);
+                account = _database.Accounts.FirstOrDefault(x => x.AccountId == operation.AccountId);
             }
             else
             {
-                account = db.Accounts.FirstOrDefault(x => x.IbanCode == operation.IbanConde);
+                account = _database.Accounts.FirstOrDefault(x => x.IbanCode == operation.IbanConde);
             }
             if (account == null)
             {
@@ -43,23 +43,23 @@ namespace PaymentGateway.Application.WriteOperations
 
             if (!String.IsNullOrEmpty(operation.Currency))
             {
-                account = db.Accounts.FirstOrDefault(x => x.Currency == operation.Currency);
+                account = _database.Accounts.FirstOrDefault(x => x.Currency == operation.Currency);
             }
 
 
             Transaction transaction = new Transaction();
-            transaction.TransactionId = db.Transactions.Count() + 1;
+            transaction.TransactionId = _database.Transactions.Count() + 1;
             transaction.Currency = account.Currency;
             transaction.Amount = operation.Amount;
             transaction.Type = TransactionType.Deposit;
             transaction.Date = DateTime.Now;
 
 
-            db.Transactions.Add(transaction);
+            _database.Transactions.Add(transaction);
 
             account.Balance = account.Balance + transaction.Amount;
 
-            db.SaveChanges();
+            _database.SaveChanges();
 
             DepositedMoney depMoney = new(operation.IbanConde, account.Balance, operation.Currency);
             eventSender.SendEvent(depMoney);

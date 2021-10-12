@@ -13,6 +13,7 @@ namespace PaymentGateway.Application.WriteOperations
 {
     public class CreateAccount: IWriteOperation<CreateAccountCommand>
     {
+        private readonly Database _database;
         private readonly IEventSender _eventSender;
         private readonly AccountOptions _accountOptions;
 
@@ -23,18 +24,18 @@ namespace PaymentGateway.Application.WriteOperations
 
         public void PerformOperation(CreateAccountCommand operation)
         {
-            Database database = Database.GetInstance();
+            
             var random = new Random();
 
             Person person;
 
             if (operation.PersonId.HasValue)
             {
-                person = database.Persons.FirstOrDefault(x => x.PersonId == operation.PersonId);
+                person = _database.Persons.FirstOrDefault(x => x.PersonId == operation.PersonId);
             }
             else
             {
-                person = database.Persons.FirstOrDefault(x => x.CNP == operation.Cnp);
+                person = _database.Persons.FirstOrDefault(x => x.CNP == operation.Cnp);
             }
             if (person == null)
             {
@@ -65,9 +66,9 @@ namespace PaymentGateway.Application.WriteOperations
             account.Status = AccountStatus.Active;
             account.PersondId = person.PersonId;
 
-            database.Accounts.Add(account);
+            _database.Accounts.Add(account);
 
-            database.SaveChanges();
+            _database.SaveChanges();
 
             AccountCreated accountCreated = new(operation.IbanCode, operation.AccountType);
             _eventSender.SendEvent(accountCreated);

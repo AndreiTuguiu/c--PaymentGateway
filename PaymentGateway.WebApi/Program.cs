@@ -34,6 +34,7 @@ namespace PaymentGateway.WebApi
             {
                 Log.CloseAndFlush();
             }
+
         }
 
         public static IWebHost BuildWebHost(string[] args) =>
@@ -42,5 +43,6 @@ namespace PaymentGateway.WebApi
             .UseConfiguration(Configuration)
             .UseSerilog()
             .Build();
+
     }
 }

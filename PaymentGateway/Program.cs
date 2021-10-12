@@ -1,104 +1,128 @@
 ﻿using Abstractions;
 using ExternalService;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using PaymentGateway.Application;
 using PaymentGateway.Application.WriteOperations;
 using PaymentGateway.Models;
 using PaymentGateway.PublishedLanguage.WriteSide;
 using System;
+using System.IO;
 
 namespace PaymentGateway
 {
     class Program
     {
+        static IConfiguration Configuration;
         static void Main(string[] args)
         {
-            Account firstAccount = new Account();
-            firstAccount.Balance = 100;
+            Configuration = new ConfigurationBuilder()
+                 .SetBasePath(Directory.GetCurrentDirectory())
+                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
+                 .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") ?? "Production"}.json", optional: true, reloadOnChange: true)
+                 .AddEnvironmentVariables()
+                 .Build();
 
-            Console.WriteLine(firstAccount.Balance);
-            IEventSender eventSender = new EventSender();
-            AccountOptions accOpt = new AccountOptions();
+            // setup
+            var services = new ServiceCollection();
+            services.RegisterBusinessServices(Configuration);
 
-            EnrollCustomerOperation client = new EnrollCustomerOperation(eventSender);
-            EnrollCustomerCommand command = new EnrollCustomerCommand();
+            services.AddSingleton<IEventSender, EventSender>();
+            services.AddSingleton(Configuration);
 
-            command.Name = "Popescu";
-            command.UniqueIdentifier = "1234567898765";
-            command.ClientType="Individual";
-           // command.AccountType = "Activ";
-            command.Currency = "RON";
+            // build
+            var serviceProvider = services.BuildServiceProvider();
 
-            
+            // use
+            var command = new EnrollCustomerCommand
+            {
+                ClientType = "Individual",
+                AccountType = "Current",
+                Name = "YEP",
+                Currency = "RON",
+                UniqueIdentifier = "23",
+            };
 
-            Console.WriteLine(command.Name);
-            Console.WriteLine(command.UniqueIdentifier);
-            Console.WriteLine(command.ClientType);
-            Console.WriteLine(command.AccountType);
-            Console.WriteLine(command.Currency);
-
+            var client = serviceProvider.GetRequiredService<EnrollCustomerOperation>();
+           
             client.PerformOperation(command);
 
 
-            CreateAccount createAccount = new CreateAccount(eventSender,accOpt);
-            CreateAccountCommand createAccountCommand = new CreateAccountCommand();
+            var createAccountCommand = new CreateAccountCommand
+            {
+                IbanCode="RO123456789",
+                PersonId= 0,
+                AccountType = "Investment",
+                Currency = "RON"
+                
+            };
+            var createAccount = serviceProvider.GetRequiredService<CreateAccount>();
 
-            createAccountCommand.PersonId = 0;
-            createAccountCommand.Currency = "RON";
-            createAccountCommand.IbanCode = "RO12345678987";
-            createAccountCommand.AccountType = "Investment";
-
-            Console.WriteLine(createAccountCommand.PersonId);
-            Console.WriteLine(createAccountCommand.IbanCode);
-            Console.WriteLine(createAccountCommand.AccountType);
-           
 
             createAccount.PerformOperation(createAccountCommand);
 
 
-            DepositMoney depMon = new DepositMoney(eventSender);
-            DepositMoneyCommand depMonComm = new DepositMoneyCommand();
-            depMonComm.AccountId = 0;
-            depMonComm.IbanConde = "RO12345678987";
-            depMonComm.Currency = "RON";
-            depMonComm.Amount = 10000;
+            var depMonComm= new DepositMoneyCommand
+            {
+                AccountId=1,
+                IbanConde = "RO123456789",
+                Amount = 10000,
+                Currency="RON"
+            };
+            var depMon = serviceProvider.GetRequiredService<DepositMoney>();
 
             depMon.PerformOperation(depMonComm);
 
 
-            WithdrawMoney withdrawMoney = new WithdrawMoney(eventSender);
-            WithdrawMoneyCommand withdraw = new WithdrawMoneyCommand();
-            withdraw.IbanConde = "RO12345678987";
-            withdraw.Currency = "RON";
-            withdraw.Amount = 3000;
-            withdraw.AccountId = 0;
+            var withdraw = new WithdrawMoneyCommand
+            {
+                AccountId = 1,
+                IbanConde = "RO123456789",
+                Amount = 3000,
+                Currency = "RON"
+            };
+
+            var withdrawMoney = serviceProvider.GetRequiredService<WithdrawMoney>();
 
             withdrawMoney.PerformOperation(withdraw);
 
-            CreateProduct product = new CreateProduct(eventSender);
-            CreateProductCommand createProduct = new CreateProductCommand();
-            createProduct.Name = "Adidasi";
-            createProduct.ProductId = 0;
-            createProduct.Value = 160;
-            createProduct.Currency = "RON";
-            createProduct.Limit = 4;
+
+            var createProduct = new CreateProductCommand
+            {
+                Name = "Adidasi",
+                ProductId = 0,
+                Value = 160,
+                Currency = "RON",
+                Limit = 4
+            };
+
+            var product = serviceProvider.GetRequiredService<CreateProduct>();
 
             product.PerformOperation(createProduct);
 
-            CreateProduct product1 = new CreateProduct(eventSender);
-            CreateProductCommand createProduct1 = new CreateProductCommand();
-            createProduct1.Name = "Blugi";
-            createProduct.ProductId = 1;
-            createProduct.Value = 100;
-            createProduct.Currency = "RON";
-            createProduct.Limit = 3;
+
+            var createProduct1 = new CreateProductCommand
+            {
+                Name = "Blugi",
+                ProductId = 1,
+                Value = 100,
+                Currency = "RON",
+                Limit = 3
+            };
+
+            var product1 = serviceProvider.GetRequiredService<CreateProduct>();
 
             product1.PerformOperation(createProduct1);
 
-            PurchaseProduct purchase = new PurchaseProduct(eventSender);
-            PurchaseProductCommand purchaseProductCommand = new PurchaseProductCommand();
-            purchaseProductCommand.AccountId = 0;
-            purchaseProductCommand.ProductId = 0;
-            purchaseProductCommand.Quantity = 3;
+
+            var purchaseProductCommand = new PurchaseProductCommand
+            {
+                AccountId = 0,
+                ProductId = 0,
+                Quantity = 3
+            };
+
+            var purchase = serviceProvider.GetRequiredService<PurchaseProduct>();
 
             purchase.PerformOperation(purchaseProductCommand);
 

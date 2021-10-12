@@ -20,4 +20,10 @@
 		<ProjectReference Include="..\PaymentGateway.PublishLanguage\PaymentGateway.PublishedLanguage.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+		<Content Update="appsettings.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+
 </Project>

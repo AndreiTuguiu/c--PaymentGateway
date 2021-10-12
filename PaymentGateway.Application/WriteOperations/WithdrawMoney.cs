@@ -14,21 +14,22 @@ namespace PaymentGateway.Application.WriteOperations
     public class WithdrawMoney : IWriteOperation<WithdrawMoneyCommand>
     {
         public IEventSender eventSender;
+        private readonly Database _database;
         public WithdrawMoney(IEventSender eventSender)
         {
             this.eventSender = eventSender;
         }
         public void PerformOperation(WithdrawMoneyCommand operation)
         {
-            Database database = Database.GetInstance();
+            
             Account account;
             if (operation.AccountId.HasValue)
             {
-                account = database.Accounts.FirstOrDefault(x => x.AccountId == operation.AccountId);
+                account = _database.Accounts.FirstOrDefault(x => x.AccountId == operation.AccountId);
             }
             else
             {
-                account = database.Accounts.FirstOrDefault(x => x.IbanCode == operation.IbanConde);
+                account = _database.Accounts.FirstOrDefault(x => x.IbanCode == operation.IbanConde);
             }
             if (account == null)
             {
@@ -42,7 +43,7 @@ namespace PaymentGateway.Application.WriteOperations
 
             if (!String.IsNullOrEmpty(operation.Currency))
             {
-                account = database.Accounts.FirstOrDefault(x => x.Currency == operation.Currency);
+                account = _database.Accounts.FirstOrDefault(x => x.Currency == operation.Currency);
             }
 
             if(account.Balance< operation.Amount)
@@ -51,17 +52,17 @@ namespace PaymentGateway.Application.WriteOperations
             }
 
             Transaction transaction = new Transaction();
-            transaction.TransactionId = database.Transactions.Count() + 1;
+            transaction.TransactionId = _database.Transactions.Count() + 1;
             transaction.Currency = operation.Currency;
             transaction.Amount = operation.Amount;
             transaction.Date = DateTime.Now;
             transaction.Type = TransactionType.Withdraw;
 
-            database.Transactions.Add(transaction);
+            _database.Transactions.Add(transaction);
 
             account.Balance = account.Balance - transaction.Amount;
 
-            database.SaveChanges();
+            _database.SaveChanges();
 
             WithDrawnMoney withDrawnMoney = new(account.IbanCode, account.Balance, account.Currency);
             eventSender.SendEvent(withDrawnMoney);
