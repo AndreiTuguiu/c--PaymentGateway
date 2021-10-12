@@ -55,3 +55,9 @@ C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway.WebApi\obj\Deb
 C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway.WebApi\obj\Debug\net5.0\ref\PaymentGateway.WebApi.dll
 C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway.WebApi\obj\Debug\net5.0\PaymentGateway.WebApi.pdb
 C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway.WebApi\obj\Debug\net5.0\PaymentGateway.WebApi.genruntimeconfig.cache
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway.WebApi\bin\Debug\net5.0\Microsoft.OpenApi.dll
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway.WebApi\bin\Debug\net5.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway.WebApi\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway.WebApi\bin\Debug\net5.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway.WebApi\obj\Debug\net5.0\PaymentGateway.WebApi.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway.WebApi\obj\Debug\net5.0\PaymentGateway.WebApi.csproj.CopyComplete
