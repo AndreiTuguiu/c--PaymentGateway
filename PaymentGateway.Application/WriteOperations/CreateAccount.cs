@@ -13,11 +13,12 @@ namespace PaymentGateway.Application.WriteOperations
 {
     public class CreateAccount: IWriteOperation<CreateAccountCommand>
     {
-        public IEventSender eventSender;
+        private readonly IEventSender _eventSender;
+        private readonly AccountOptions _accountOptions;
 
-        public CreateAccount(IEventSender eventSender)
+        public CreateAccount(IEventSender eventSender, AccountOptions accountOptions)
         {
-            this.eventSender = eventSender;
+            _eventSender = eventSender;
         }
 
         public void PerformOperation(CreateAccountCommand operation)
@@ -42,7 +43,7 @@ namespace PaymentGateway.Application.WriteOperations
 
             
             Account account = new Account();
-            account.Balance = 0;
+            account.Balance = _accountOptions.InitialBalance;
             account.Currency = operation.Currency;
             account.IbanCode = operation.IbanCode;
 
@@ -69,7 +70,7 @@ namespace PaymentGateway.Application.WriteOperations
             database.SaveChanges();
 
             AccountCreated accountCreated = new(operation.IbanCode, operation.AccountType);
-            eventSender.SendEvent(accountCreated);
+            _eventSender.SendEvent(accountCreated);
             
             
 

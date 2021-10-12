@@ -33,6 +33,9 @@
     ".NETCoreApp,Version=v5.0": {
       "PaymentGateway.WebApi/1.0.0": {
         "dependencies": {
+          "ExternalService": "1.0.0",
+          "PaymentGateway.Application": "1.0.0",
+          "PaymentGateway.PublishedLanguage": "1.0.0",
           "Serilog.AspNetCore": "3.4.0",
           "Serilog.Extensions.Logging": "3.0.2-dev-10284",
           "Serilog.Sinks.Console": "4.0.0-dev-00839",
@@ -1878,6 +1881,65 @@
           "System.Threading": "4.3.0",
           "System.Xml.ReaderWriter": "4.3.0",
           "System.Xml.XmlDocument": "4.3.0"
+        }
+      },
+      "Abstractions/1.0.0": {
+        "runtime": {
+          "Abstractions.dll": {}
+        },
+        "compile": {
+          "Abstractions.dll": {}
+        }
+      },
+      "ExternalService/1.0.0": {
+        "dependencies": {
+          "Abstractions": "1.0.0"
+        },
+        "runtime": {
+          "ExternalService.dll": {}
+        },
+        "compile": {
+          "ExternalService.dll": {}
+        }
+      },
+      "PaymentGateway.Application/1.0.0": {
+        "dependencies": {
+          "Abstractions": "1.0.0",
+          "PaymentGateway.Data": "1.0.0",
+          "PaymentGateway.PublishedLanguage": "1.0.0"
+        },
+        "runtime": {
+          "PaymentGateway.Application.dll": {}
+        },
+        "compile": {
+          "PaymentGateway.Application.dll": {}
+        }
+      },
+      "PaymentGateway.Data/1.0.0": {
+        "dependencies": {
+          "PaymentGateway.Models": "1.0.0"
+        },
+        "runtime": {
+          "PaymentGateway.Data.dll": {}
+        },
+        "compile": {
+          "PaymentGateway.Data.dll": {}
+        }
+      },
+      "PaymentGateway.Models/1.0.0": {
+        "runtime": {
+          "PaymentGateway.Models.dll": {}
+        },
+        "compile": {
+          "PaymentGateway.Models.dll": {}
+        }
+      },
+      "PaymentGateway.PublishedLanguage/1.0.0": {
+        "runtime": {
+          "PaymentGateway.PublishedLanguage.dll": {}
+        },
+        "compile": {
+          "PaymentGateway.PublishedLanguage.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/5.0.0.0": {
@@ -4607,6 +4669,36 @@
       "sha512": "sha512-MYoTCP7EZ98RrANESW05J5ZwskKDoN0AuZ06ZflnowE50LTpbR5yRg3tHckTVm5j/m47stuGgCrCHWePyHS70Q==",
       "path": "system.xml.xmlserializer/4.3.0",
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    },
+    "Abstractions/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ExternalService/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PaymentGateway.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PaymentGateway.Data/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PaymentGateway.Models/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "PaymentGateway.PublishedLanguage/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "Microsoft.AspNetCore.Antiforgery/5.0.0.0": {
       "type": "referenceassembly",

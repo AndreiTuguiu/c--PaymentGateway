@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
@@ -12,6 +12,12 @@
 		<PackageReference Include="Serilog.Sinks.Console" Version="$(SerilogSinksConsolePackageVersion)" />
 		<PackageReference Include="Serilog.Sinks.MSSqlServer" Version="$(SerilogSinksMSSqlServerPackageVersion)" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="$(SwashbuckleAspNetCore)" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\ExternalService\ExternalService.csproj" />
+		<ProjectReference Include="..\PaymentGateway.Application\PaymentGateway.Application.csproj" />
+		<ProjectReference Include="..\PaymentGateway.PublishLanguage\PaymentGateway.PublishedLanguage.csproj" />
 	</ItemGroup>
 
 </Project>

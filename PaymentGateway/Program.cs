@@ -1,5 +1,6 @@
 ﻿using Abstractions;
 using ExternalService;
+using PaymentGateway.Application;
 using PaymentGateway.Application.WriteOperations;
 using PaymentGateway.Models;
 using PaymentGateway.PublishedLanguage.WriteSide;
@@ -16,6 +17,7 @@ namespace PaymentGateway
 
             Console.WriteLine(firstAccount.Balance);
             IEventSender eventSender = new EventSender();
+            AccountOptions accOpt = new AccountOptions();
 
             EnrollCustomerOperation client = new EnrollCustomerOperation(eventSender);
             EnrollCustomerCommand command = new EnrollCustomerCommand();
@@ -37,7 +39,7 @@ namespace PaymentGateway
             client.PerformOperation(command);
 
 
-            CreateAccount createAccount = new CreateAccount(eventSender);
+            CreateAccount createAccount = new CreateAccount(eventSender,accOpt);
             CreateAccountCommand createAccountCommand = new CreateAccountCommand();
 
             createAccountCommand.PersonId = 0;
