@@ -18,4 +18,3 @@ C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway.Application\bi
 C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway.Application\obj\Debug\net5.0\PaymentGateway.Application.dll
 C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway.Application\obj\Debug\net5.0\ref\PaymentGateway.Application.dll
 C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway.Application\obj\Debug\net5.0\PaymentGateway.Application.pdb
-C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway.Application\obj\Debug\net5.0\PaymentGateway.Application.csproj.CopyComplete

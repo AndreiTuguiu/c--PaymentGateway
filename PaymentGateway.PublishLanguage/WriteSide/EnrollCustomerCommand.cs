@@ -13,6 +13,7 @@ namespace PaymentGateway.PublishedLanguage.WriteSide
         public string ClientType { get; set; }
         public string AccountType { get; set;}
         public string Currency { get; set; }
+        public string IbanCode { get; set; }
 
     }
 }

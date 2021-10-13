@@ -3,6 +3,7 @@ using ExternalService;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PaymentGateway.Application;
+using PaymentGateway.Application.ReadOperations;
 using PaymentGateway.Application.WriteOperations;
 using PaymentGateway.Models;
 using PaymentGateway.PublishedLanguage.WriteSide;
@@ -41,6 +42,7 @@ namespace PaymentGateway
                 Name = "YEP",
                 Currency = "RON",
                 UniqueIdentifier = "23",
+                IbanCode= "RO987654321"
             };
 
             var client = serviceProvider.GetRequiredService<EnrollCustomerOperation>();
@@ -51,7 +53,7 @@ namespace PaymentGateway
             var createAccountCommand = new CreateAccountCommand
             {
                 IbanCode="RO123456789",
-                PersonId= 0,
+                PersonId= 1,
                 AccountType = "Investment",
                 Currency = "RON"
                 
@@ -64,7 +66,7 @@ namespace PaymentGateway
 
             var depMonComm= new DepositMoneyCommand
             {
-                AccountId=1,
+                AccountId=2,
                 IbanConde = "RO123456789",
                 Amount = 10000,
                 Currency="RON"
@@ -76,7 +78,7 @@ namespace PaymentGateway
 
             var withdraw = new WithdrawMoneyCommand
             {
-                AccountId = 1,
+                AccountId = 2,
                 IbanConde = "RO123456789",
                 Amount = 3000,
                 Currency = "RON"
@@ -125,6 +127,15 @@ namespace PaymentGateway
             var purchase = serviceProvider.GetRequiredService<PurchaseProduct>();
 
             purchase.PerformOperation(purchaseProductCommand);
+
+
+            var query = new Application.ReadOperations.ListOfAccounts.Query
+            {
+                PersonId = 1
+            };
+
+            var handler = serviceProvider.GetRequiredService<ListOfAccounts.QueryHandler>();
+            var result = handler.PerformOperation(query);
 
 
             Console.ReadLine();

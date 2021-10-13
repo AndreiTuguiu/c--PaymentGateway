@@ -68,6 +68,8 @@ namespace PaymentGateway.Application.WriteOperations
             account.Status = AccountStatus.Active;
             account.PersondId = person.PersonId;
 
+            account.AccountId = _database.Accounts.Count + 1;
+
             _database.Accounts.Add(account);
 
             _database.SaveChanges();

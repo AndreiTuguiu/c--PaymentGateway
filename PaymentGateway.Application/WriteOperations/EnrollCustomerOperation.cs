@@ -22,11 +22,12 @@ namespace PaymentGateway.Application.WriteOperations
         }
         public void PerformOperation(EnrollCustomerCommand operation)
         {
-            
-            Person person = new Person();
-            var random = new Random();
-            person.CNP = operation.UniqueIdentifier;
-            person.Name = operation.Name;
+
+            var person = new Person
+            {
+                CNP = operation.UniqueIdentifier,
+                Name = operation.Name
+            };
             if (operation.ClientType == "Company")
             {
                 person.Type = PersonType.Company;
@@ -39,6 +40,7 @@ namespace PaymentGateway.Application.WriteOperations
                 throw new Exception("Unsupport person type!");
             }
 
+            person.PersonId = _database.Persons.Count + 1;
 
             _database.Persons.Add(person);
 
@@ -46,7 +48,7 @@ namespace PaymentGateway.Application.WriteOperations
             account.Type = AccountType.Current;
             account.Currency = operation.Currency;
             account.Balance = 0;
-            account.IbanCode = random.Next(100000).ToString();
+            account.IbanCode = operation.IbanCode;
 
             _database.Accounts.Add(account);
 
