@@ -66,7 +66,7 @@ namespace PaymentGateway.Application.WriteOperations
             _database.SaveChanges();
 
             WithDrawnMoney withDrawnMoney = new(account.IbanCode, account.Balance, account.Currency);
-            eventSender.SendEvent(withDrawnMoney);
+            _eventSender.SendEvent(withDrawnMoney);
         }
     }
 }
