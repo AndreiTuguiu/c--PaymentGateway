@@ -52,7 +52,7 @@ namespace PaymentGateway.Application.WriteOperations
 
             _database.SaveChanges();
             CustomerEnrolled eventCustEnroll = new(operation.Name,operation.UniqueIdentifier,operation.ClientType);
-            eventSender.SendEvent(eventCustEnroll);
+            _eventSender.SendEvent(eventCustEnroll);
         }
     }
 }

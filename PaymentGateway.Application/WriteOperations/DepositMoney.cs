@@ -63,7 +63,7 @@ namespace PaymentGateway.Application.WriteOperations
             _database.SaveChanges();
 
             DepositedMoney depMoney = new(operation.IbanConde, account.Balance, operation.Currency);
-            eventSender.SendEvent(depMoney);
+            _eventSender.SendEvent(depMoney);
 
         }
     }

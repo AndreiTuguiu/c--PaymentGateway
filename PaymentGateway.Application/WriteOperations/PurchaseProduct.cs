@@ -70,7 +70,7 @@ namespace PaymentGateway.Application.WriteOperations
             _database.SaveChanges();
 
             ProductPurchased productPurchased = new(account.AccountId, pxt.ProductId, pxt.Quantity, totalValue);
-            eventSender.SendEvent(productPurchased);
+            _eventSender.SendEvent(productPurchased);
             
         }
     }

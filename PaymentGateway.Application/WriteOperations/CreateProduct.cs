@@ -35,7 +35,7 @@ namespace PaymentGateway.Application.WriteOperations
             _database.SaveChanges();
 
             ProductCreated productCreated = new(product.Name, product.Value, product.Currency);
-            eventSender.SendEvent(productCreated);
+            _eventSender.SendEvent(productCreated);
         }
     }
 }
