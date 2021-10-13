@@ -13,11 +13,12 @@ namespace PaymentGateway.Application.WriteOperations
 {
     public class PurchaseProduct : IWriteOperation<PurchaseProductCommand>
     {
-        public IEventSender eventSender;
+        private readonly IEventSender _eventSender;
         private readonly Database _database;
-        public PurchaseProduct(IEventSender eventSender)
+        public PurchaseProduct(IEventSender eventSender, Database database)
         {
-            this.eventSender = eventSender;
+            _eventSender = eventSender;
+            _database = database;
         }
         public void PerformOperation(PurchaseProductCommand operation)
         {

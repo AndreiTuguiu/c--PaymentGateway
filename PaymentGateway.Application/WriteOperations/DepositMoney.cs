@@ -13,11 +13,12 @@ namespace PaymentGateway.Application.WriteOperations
 {
     public class DepositMoney : IWriteOperation<DepositMoneyCommand>
     {
-        public IEventSender eventSender;
+        private readonly IEventSender _eventSender;
         private readonly Database _database;
-        public DepositMoney(IEventSender eventSender)
+        public DepositMoney(IEventSender eventSender,Database database)
         {
-            this.eventSender = eventSender;
+            _eventSender = eventSender;
+            _database = database;
         }
         public void PerformOperation(DepositMoneyCommand operation)
         {

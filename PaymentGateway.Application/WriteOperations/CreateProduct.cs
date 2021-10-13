@@ -14,10 +14,11 @@ namespace PaymentGateway.Application.WriteOperations
     public class CreateProduct : IWriteOperation<CreateProductCommand>
     {
         private readonly Database _database;
-        public IEventSender eventSender;
-        public CreateProduct(IEventSender eventSender)
+        private readonly IEventSender _eventSender;
+        public CreateProduct(IEventSender eventSender,Database database)
         {
-            this.eventSender = eventSender;
+            _eventSender = eventSender;
+            _database = database;
         }
         public void PerformOperation(CreateProductCommand operation)
         {

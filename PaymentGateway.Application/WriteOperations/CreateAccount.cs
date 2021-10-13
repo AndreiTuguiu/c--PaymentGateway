@@ -17,9 +17,11 @@ namespace PaymentGateway.Application.WriteOperations
         private readonly IEventSender _eventSender;
         private readonly AccountOptions _accountOptions;
 
-        public CreateAccount(IEventSender eventSender, AccountOptions accountOptions)
+        public CreateAccount(IEventSender eventSender, AccountOptions accountOptions,Database database)
         {
             _eventSender = eventSender;
+            _accountOptions = accountOptions;
+            _database = database;
         }
 
         public void PerformOperation(CreateAccountCommand operation)
