@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PaymentGateway.Application;
 using PaymentGateway.Application.Queries;
+using PaymentGateway.PublishedLanguage.Event;
 using PaymentGateway.WebApi.Swagger;
 
 namespace PaymentGateway.WebApi
@@ -29,8 +30,10 @@ namespace PaymentGateway.WebApi
             var secondAssmenbly = typeof(AllEventHandler).Assembly;//catch
 
 
-            services.AddMediatR(firstAssembly, secondAssmenbly);// get all IRequestHandler and INotification classes
-           
+            services.AddMediatR(new[] { firstAssembly, secondAssmenbly});// get all IRequestHandler and INotification classes
+
+            services.AddScopedContravariant<INotificationHandler<INotification>, AllEventHandler>(typeof(CustomerEnrolled).Assembly);
+
             //services.AddSingleton<IEventSender, AllEventHandler>();
 
             services.RegisterBusinessServices(Configuration);

@@ -9,6 +9,8 @@ using PaymentGateway.Application.Queries;
 using ExternalService;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Reflection;
+using PaymentGateway.PublishedLanguage.Event;
 
 namespace PaymentGateway
 {
@@ -30,8 +32,10 @@ namespace PaymentGateway
             var source = new CancellationTokenSource();
             var cancellationToken = source.Token;
 
-            services.AddMediatR(typeof(ListOfAccounts).Assembly, typeof(AllEventHandler).Assembly);
             services.RegisterBusinessServices(Configuration);
+
+            services.AddMediatR(typeof(ListOfAccounts).Assembly, typeof(AllEventHandler).Assembly);
+            services.AddScopedContravariant<INotificationHandler<INotification>, AllEventHandler>(typeof(CustomerEnrolled).Assembly);
 
             //services.AddSingleton<IEventSender, AllEventHandler>();
             services.AddSingleton(Configuration);
