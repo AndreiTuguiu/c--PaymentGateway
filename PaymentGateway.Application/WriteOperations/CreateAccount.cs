@@ -2,16 +2,16 @@
 using PaymentGateway.Data;
 using PaymentGateway.Models;
 using PaymentGateway.PublishedLanguage.Event;
-using PaymentGateway.PublishedLanguage.WriteSide;
+using PaymentGateway.PublishedLanguage.Commands;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using MediatR;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace PaymentGateway.Application.WriteOperations
 {
-    public class CreateAccount: IWriteOperation<CreateAccountCommand>
+    public class CreateAccount: IRequestHandler<CreateAccountCommand>
     {
         private readonly Database _database;
         private readonly IEventSender _eventSender;
@@ -24,41 +24,40 @@ namespace PaymentGateway.Application.WriteOperations
             _database = database;
         }
 
-        public void PerformOperation(CreateAccountCommand operation)
+        public Task<Unit> Handle(CreateAccountCommand request, CancellationToken cancellationToken)
         {
-            
             var random = new Random();
 
             Person person;
 
-            if (operation.PersonId.HasValue)
+            if (request.PersonId.HasValue)
             {
-                person = _database.Persons.FirstOrDefault(x => x.PersonId == operation.PersonId);
+                person = _database.Persons.FirstOrDefault(x => x.PersonId == request.PersonId);
             }
             else
             {
-                person = _database.Persons.FirstOrDefault(x => x.CNP == operation.Cnp);
+                person = _database.Persons.FirstOrDefault(x => x.CNP == request.Cnp);
             }
             if (person == null)
             {
                 throw new Exception("Person not found!");
             }
 
-            
+
             Account account = new Account();
             account.Balance = _accountOptions.InitialBalance;
-            account.Currency = operation.Currency;
-            account.IbanCode = operation.IbanCode;
+            account.Currency = request.Currency;
+            account.IbanCode = request.IbanCode;
 
-            switch (operation.AccountType)
+            switch (request.AccountType)
             {
-                case "Current": 
+                case "Current":
                     account.Type = AccountType.Current;
                     break;
-                case "Investment": 
+                case "Investment":
                     account.Type = AccountType.Investment;
                     break;
-                case "Economy": 
+                case "Economy":
                     account.Type = AccountType.Economy;
                     break;
                 default:
@@ -74,11 +73,12 @@ namespace PaymentGateway.Application.WriteOperations
 
             _database.SaveChanges();
 
-            AccountCreated accountCreated = new(operation.IbanCode, operation.AccountType);
+            AccountCreated accountCreated = new(request.IbanCode, request.AccountType);
             _eventSender.SendEvent(accountCreated);
-            
-            
 
+            return Unit.Task;
         }
+
+        
     }
 }

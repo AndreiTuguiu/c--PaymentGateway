@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PaymentGateway.Application;
-using PaymentGateway.Application.WriteOperations;
 using PaymentGateway.WebApi.Swagger;
 
 namespace PaymentGateway.WebApi

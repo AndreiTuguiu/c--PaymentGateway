@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PaymentGateway.Application.WriteOperations;
-using PaymentGateway.PublishedLanguage.WriteSide;
+using PaymentGateway.PublishedLanguage.Commands;
 using PaymentGateway.Application.ReadOperations;
 using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace PaymentGateway.WebApi.Controllers
 {
@@ -21,17 +23,17 @@ namespace PaymentGateway.WebApi.Controllers
 
         [HttpPost]
         [Route("Create")]
-        public string CreateAccount(CreateAccountCommand command)
+        public async Task<string> CreateAccount(CreateAccountCommand command, CancellationToken cancellationToken)
         {
-            _createAccountCommandHandler.PerformOperation(command);
+            await _createAccountCommandHandler.Handle(command, cancellationToken);
             return "ok";
         }
 
         [HttpGet]
         [Route("ListOfAccounts")]
-        public List<ListOfAccounts.Model> GetListOfAccounts([FromQuery] ListOfAccounts.Query query)
+        public async Task<List<ListOfAccounts.Model>> GetListOfAccounts([FromQuery] ListOfAccounts.Query query, CancellationToken cancellationToken)
         {
-            var result = _queryHandler.PerformOperation(query);
+            var result = await _queryHandler.Handle(query,cancellationToken);
             return result;
         }
     }

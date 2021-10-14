@@ -2,16 +2,16 @@
 using PaymentGateway.Data;
 using PaymentGateway.Models;
 using PaymentGateway.PublishedLanguage.Event;
-using PaymentGateway.PublishedLanguage.WriteSide;
+using PaymentGateway.PublishedLanguage.Commands;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using MediatR;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace PaymentGateway.Application.WriteOperations
 {
-    public class PurchaseProduct : IWriteOperation<PurchaseProductCommand>
+    public class PurchaseProduct : IRequestHandler<PurchaseProductCommand>
     {
         private readonly IEventSender _eventSender;
         private readonly Database _database;
@@ -20,31 +20,31 @@ namespace PaymentGateway.Application.WriteOperations
             _eventSender = eventSender;
             _database = database;
         }
-        public void PerformOperation(PurchaseProductCommand operation)
-        {
-           
-            var account = _database.Accounts.FirstOrDefault(x => x.AccountId == operation.AccountId);
 
-            if(account== null)
+        public Task<Unit> Handle(PurchaseProductCommand request, CancellationToken cancellationToken)
+        {
+            var account = _database.Accounts.FirstOrDefault(x => x.AccountId == request.AccountId);
+
+            if (account == null)
             {
                 throw new Exception("Account not found");
             }
             double totalValue;
             string currency;
-            var product = _database.Products.FirstOrDefault(x => x.ProductId == operation.ProductId);
-            if(product== null)
+            var product = _database.Products.FirstOrDefault(x => x.ProductId == request.ProductId);
+            if (product == null)
             {
                 throw new Exception("Product not found");
             }
-            if(product.Limit< operation.Quantity)
+            if (product.Limit < request.Quantity)
             {
                 throw new Exception("Not enough in stock");
             }
-            totalValue = product.Value*operation.Quantity;
+            totalValue = product.Value * request.Quantity;
             currency = product.Currency;
-            product.Limit -= operation.Quantity;
+            product.Limit -= request.Quantity;
 
-            if(totalValue> account.Balance)
+            if (totalValue > account.Balance)
             {
                 throw new Exception("Not enough Balance");
             }
@@ -62,8 +62,8 @@ namespace PaymentGateway.Application.WriteOperations
 
             ProductXTransaction pxt = new ProductXTransaction();
             pxt.TransactionId = transaction.TransactionId;
-            pxt.ProductId = operation.ProductId;
-            pxt.Quantity = operation.Quantity;
+            pxt.ProductId = request.ProductId;
+            pxt.Quantity = request.Quantity;
 
             _database.ProductXTransactions.Add(pxt);
 
@@ -71,7 +71,8 @@ namespace PaymentGateway.Application.WriteOperations
 
             ProductPurchased productPurchased = new(account.AccountId, pxt.ProductId, pxt.Quantity, totalValue);
             _eventSender.SendEvent(productPurchased);
-            
+            return Unit.Task;
         }
+
     }
 }

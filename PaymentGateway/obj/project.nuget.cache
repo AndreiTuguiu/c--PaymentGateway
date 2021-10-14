@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "4qnvZV7X3LnfcrAMvNpVoTVTTsaK5pCeiGAFxSZujQysDdQ/mnQc6igxJTfiWOACqctlFAXAg/Pf4KEKwX+e9Q==",
+  "dgSpecHash": "syPoUZCKzXPw7ENIuI/CeuhqvjvgWJZPpqXbRFiul7MMP6oM0XxSbWiCaOtUuE1ZnPzPtQjoMQKrcXsnwvWRuA==",
   "success": true,
   "projectFilePath": "C:\\Users\\andrei.tuguiu\\source\\repos\\PaymentGateway\\PaymentGateway\\PaymentGateway.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\mediatr\\9.0.0\\mediatr.9.0.0.nupkg.sha512",
     "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\microsoft.extensions.configuration\\5.0.0\\microsoft.extensions.configuration.5.0.0.nupkg.sha512",
     "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\microsoft.extensions.configuration.binder\\5.0.0\\microsoft.extensions.configuration.binder.5.0.0.nupkg.sha512",

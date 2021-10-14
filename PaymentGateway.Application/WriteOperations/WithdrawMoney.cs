@@ -2,16 +2,16 @@
 using PaymentGateway.Data;
 using PaymentGateway.Models;
 using PaymentGateway.PublishedLanguage.Event;
-using PaymentGateway.PublishedLanguage.WriteSide;
+using PaymentGateway.PublishedLanguage.Commands;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using MediatR;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace PaymentGateway.Application.WriteOperations
 {
-    public class WithdrawMoney : IWriteOperation<WithdrawMoneyCommand>
+    public class WithdrawMoney : IRequestHandler<WithdrawMoneyCommand>
     {
         private readonly IEventSender _eventSender;
         private readonly Database _database;
@@ -20,42 +20,42 @@ namespace PaymentGateway.Application.WriteOperations
             _eventSender = eventSender;
             _database = database;
         }
-        public void PerformOperation(WithdrawMoneyCommand operation)
+
+        public Task<Unit> Handle(WithdrawMoneyCommand request, CancellationToken cancellationToken)
         {
-            
             Account account;
-            if (operation.AccountId.HasValue)
+            if (request.AccountId.HasValue)
             {
-                account = _database.Accounts.FirstOrDefault(x => x.AccountId == operation.AccountId);
+                account = _database.Accounts.FirstOrDefault(x => x.AccountId == request.AccountId);
             }
             else
             {
-                account = _database.Accounts.FirstOrDefault(x => x.IbanCode == operation.IbanConde);
+                account = _database.Accounts.FirstOrDefault(x => x.IbanCode == request.IbanConde);
             }
             if (account == null)
             {
                 throw new Exception("Account not found!");
             }
 
-            if (operation.Amount <= 0)
+            if (request.Amount <= 0)
             {
                 throw new Exception("Cannot withdraw amount");
             }
 
-            if (!String.IsNullOrEmpty(operation.Currency))
+            if (!String.IsNullOrEmpty(request.Currency))
             {
-                account = _database.Accounts.FirstOrDefault(x => x.Currency == operation.Currency);
+                account = _database.Accounts.FirstOrDefault(x => x.Currency == request.Currency);
             }
 
-            if(account.Balance< operation.Amount)
+            if (account.Balance < request.Amount)
             {
                 throw new Exception("Invalid withdrawal amount!");
             }
 
             Transaction transaction = new Transaction();
             transaction.TransactionId = _database.Transactions.Count() + 1;
-            transaction.Currency = operation.Currency;
-            transaction.Amount = operation.Amount;
+            transaction.Currency = request.Currency;
+            transaction.Amount = request.Amount;
             transaction.Date = DateTime.Now;
             transaction.Type = TransactionType.Withdraw;
 
@@ -67,6 +67,9 @@ namespace PaymentGateway.Application.WriteOperations
 
             WithDrawnMoney withDrawnMoney = new(account.IbanCode, account.Balance, account.Currency);
             _eventSender.SendEvent(withDrawnMoney);
+
+            return Unit.Task;
         }
+
     }
 }

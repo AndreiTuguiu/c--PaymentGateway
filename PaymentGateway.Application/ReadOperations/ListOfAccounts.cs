@@ -4,8 +4,9 @@ using PaymentGateway.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using MediatR;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace PaymentGateway.Application.ReadOperations
 {
@@ -29,25 +30,28 @@ namespace PaymentGateway.Application.ReadOperations
                 return person != null;
             }
         }
-        public class Query
+        public class Query:IRequest<List<Model>>
         {
             public int? PersonId { get; set; }
             public string Cnp { get; set; }
         }
 
-        public class QueryHandler : IReadOperation<Query, List<Model>>
+        public class QueryHandler : IRequestHandler<Query, List<Model>>
         {
             private readonly Database _database;
+            private readonly IValidator<Query> _validator;
 
-            public QueryHandler(Database database)
+            public QueryHandler(Database database,IValidator<Query> validator)
             {
                 _database = database;
+                _validator = validator;
             }
-            public List<Model> PerformOperation(Query query)
+            public Task<List<Model>> Handle(Query request, CancellationToken cancellationToken)
             {
-                var person = query.PersonId.HasValue ?
-                    _database.Persons.FirstOrDefault(x => x.PersonId == query.PersonId) :
-                    _database.Persons.FirstOrDefault(x => x.CNP == query.Cnp);
+                var isValid = _validator.Validate(request);
+                var person = request.PersonId.HasValue ?
+                    _database.Persons.FirstOrDefault(x => x.PersonId == request.PersonId) :
+                    _database.Persons.FirstOrDefault(x => x.CNP == request.Cnp);
 
                 if(person == null)
                 {
@@ -66,7 +70,7 @@ namespace PaymentGateway.Application.ReadOperations
                     Type=x.Type
                 }).ToList();
 
-                return result;
+                return Task.FromResult(result);
             }
         }
 

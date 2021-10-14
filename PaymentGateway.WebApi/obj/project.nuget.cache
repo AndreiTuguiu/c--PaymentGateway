@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "YxHnfv0QRTvdNJnKcsWWypBE6bUr64ThF1e8vVkn5UdHY9A6KSUDRXvKeIUNImmD+wjurftqT5rmNPUCV6+EGw==",
+  "dgSpecHash": "xtmD0fHDexySWQ4qVQPQZW8RqAeaCwaZ+TPkrcrEv9QwW1LV+OlS9VXKW4IcjZT3Z/BCgJC2It39HAPOeSY1Zw==",
   "success": true,
   "projectFilePath": "C:\\Users\\andrei.tuguiu\\source\\repos\\PaymentGateway\\PaymentGateway.WebApi\\PaymentGateway.WebApi.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\mediatr\\9.0.0\\mediatr.9.0.0.nupkg.sha512",
     "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\microsoft.azure.services.appauthentication\\1.4.0\\microsoft.azure.services.appauthentication.1.4.0.nupkg.sha512",
     "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
     "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\microsoft.data.sqlclient\\1.1.3\\microsoft.data.sqlclient.1.1.3.nupkg.sha512",

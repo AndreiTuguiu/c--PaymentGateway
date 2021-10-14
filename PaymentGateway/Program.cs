@@ -5,8 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using PaymentGateway.Application;
 using PaymentGateway.Application.ReadOperations;
 using PaymentGateway.Application.WriteOperations;
-using PaymentGateway.Models;
-using PaymentGateway.PublishedLanguage.WriteSide;
+using PaymentGateway.PublishedLanguage.Commands;
 using System;
 using System.IO;
 
@@ -47,7 +46,7 @@ namespace PaymentGateway
 
             var client = serviceProvider.GetRequiredService<EnrollCustomerOperation>();
            
-            client.PerformOperation(command);
+            client.Handle(command, default).GetAwaiter().GetResult();
 
 
             var createAccountCommand = new CreateAccountCommand
@@ -61,7 +60,7 @@ namespace PaymentGateway
             var createAccount = serviceProvider.GetRequiredService<CreateAccount>();
 
 
-            createAccount.PerformOperation(createAccountCommand);
+            createAccount.Handle(createAccountCommand, default).GetAwaiter().GetResult();
 
 
             var depMonComm= new DepositMoneyCommand
@@ -73,7 +72,7 @@ namespace PaymentGateway
             };
             var depMon = serviceProvider.GetRequiredService<DepositMoney>();
 
-            depMon.PerformOperation(depMonComm);
+            depMon.Handle(depMonComm, default).GetAwaiter().GetResult();
 
 
             var withdraw = new WithdrawMoneyCommand
@@ -86,7 +85,7 @@ namespace PaymentGateway
 
             var withdrawMoney = serviceProvider.GetRequiredService<WithdrawMoney>();
 
-            withdrawMoney.PerformOperation(withdraw);
+            withdrawMoney.Handle(withdraw, default).GetAwaiter().GetResult();
 
 
             var createProduct = new CreateProductCommand
@@ -100,7 +99,7 @@ namespace PaymentGateway
 
             var product = serviceProvider.GetRequiredService<CreateProduct>();
 
-            product.PerformOperation(createProduct);
+            product.Handle(createProduct, default).GetAwaiter().GetResult();
 
 
             var createProduct1 = new CreateProductCommand
@@ -114,7 +113,7 @@ namespace PaymentGateway
 
             var product1 = serviceProvider.GetRequiredService<CreateProduct>();
 
-            product1.PerformOperation(createProduct1);
+            product1.Handle(createProduct1, default).GetAwaiter().GetResult();
 
 
             var purchaseProductCommand = new PurchaseProductCommand
@@ -126,7 +125,7 @@ namespace PaymentGateway
 
             var purchase = serviceProvider.GetRequiredService<PurchaseProduct>();
 
-            purchase.PerformOperation(purchaseProductCommand);
+            purchase.Handle(purchaseProductCommand, default).GetAwaiter().GetResult();
 
 
             var query = new Application.ReadOperations.ListOfAccounts.Query
@@ -135,7 +134,7 @@ namespace PaymentGateway
             };
 
             var handler = serviceProvider.GetRequiredService<ListOfAccounts.QueryHandler>();
-            var result = handler.PerformOperation(query);
+            var result = handler.Handle(query, default).GetAwaiter().GetResult();
 
 
             Console.ReadLine();

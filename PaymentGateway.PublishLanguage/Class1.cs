@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace PaymentGateway.PublishLanguage
+﻿namespace PaymentGateway.PublishLanguage
 {
     public class Class1
     {

@@ -2,16 +2,16 @@
 using PaymentGateway.Data;
 using PaymentGateway.Models;
 using PaymentGateway.PublishedLanguage.Event;
-using PaymentGateway.PublishedLanguage.WriteSide;
+using PaymentGateway.PublishedLanguage.Commands;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using MediatR;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace PaymentGateway.Application.WriteOperations
 {
-    public class DepositMoney : IWriteOperation<DepositMoneyCommand>
+    public class DepositMoney : IRequestHandler<DepositMoneyCommand>
     {
         private readonly IEventSender _eventSender;
         private readonly Database _database;
@@ -20,38 +20,38 @@ namespace PaymentGateway.Application.WriteOperations
             _eventSender = eventSender;
             _database = database;
         }
-        public void PerformOperation(DepositMoneyCommand operation)
+
+        public Task<Unit> Handle(DepositMoneyCommand request, CancellationToken cancellationToken)
         {
-            
             Account account;
-            if (operation.AccountId.HasValue)
+            if (request.AccountId.HasValue)
             {
-                account = _database.Accounts.FirstOrDefault(x => x.AccountId == operation.AccountId);
+                account = _database.Accounts.FirstOrDefault(x => x.AccountId == request.AccountId);
             }
             else
             {
-                account = _database.Accounts.FirstOrDefault(x => x.IbanCode == operation.IbanConde);
+                account = _database.Accounts.FirstOrDefault(x => x.IbanCode == request.IbanConde);
             }
             if (account == null)
             {
                 throw new Exception("Account not found!");
             }
 
-            if (operation.Amount <= 0)
+            if (request.Amount <= 0)
             {
                 throw new Exception("Cannot deposit negative amount");
             }
 
-            if (!String.IsNullOrEmpty(operation.Currency))
+            if (!String.IsNullOrEmpty(request.Currency))
             {
-                account = _database.Accounts.FirstOrDefault(x => x.Currency == operation.Currency);
+                account = _database.Accounts.FirstOrDefault(x => x.Currency == request.Currency);
             }
 
 
             Transaction transaction = new Transaction();
             transaction.TransactionId = _database.Transactions.Count() + 1;
             transaction.Currency = account.Currency;
-            transaction.Amount = operation.Amount;
+            transaction.Amount = request.Amount;
             transaction.Type = TransactionType.Deposit;
             transaction.Date = DateTime.Now;
 
@@ -62,9 +62,12 @@ namespace PaymentGateway.Application.WriteOperations
 
             _database.SaveChanges();
 
-            DepositedMoney depMoney = new(operation.IbanConde, account.Balance, operation.Currency);
+            DepositedMoney depMoney = new(request.IbanConde, account.Balance, request.Currency);
             _eventSender.SendEvent(depMoney);
 
+            return Unit.Task;
         }
+
+        
     }
 }
