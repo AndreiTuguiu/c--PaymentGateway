@@ -20,12 +20,14 @@ namespace PaymentGateway.Application.WriteOperations
 
         public async Task<Unit> Handle(CreateProductCommand request, CancellationToken cancellationToken)
         {
-            Product product = new Product();
-            product.ProductId = request.ProductId;
-            product.Name = request.Name;
-            product.Value = request.Value;
-            product.Currency = request.Currency;
-            product.Limit = request.Limit;
+            Product product = new Product
+            {
+                ProductId = request.ProductId,
+                Name = request.Name,
+                Value = request.Value,
+                Currency = request.Currency,
+                Limit = request.Limit
+            };
 
             _database.Products.Add(product);
 

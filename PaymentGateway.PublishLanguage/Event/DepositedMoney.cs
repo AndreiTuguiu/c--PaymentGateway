@@ -1,6 +1,8 @@
-﻿namespace PaymentGateway.PublishedLanguage.Event
+﻿using MediatR;
+
+namespace PaymentGateway.PublishedLanguage.Event
 {
-    public class DepositedMoney
+    public class DepositedMoney : INotification
     {
         public string IbanCode { get; set; }
         public double Amount { get; set; }

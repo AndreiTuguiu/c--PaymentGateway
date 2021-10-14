@@ -73,3 +73,7 @@ C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway.WebApi\bin\Deb
 C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway.WebApi\bin\Debug\net5.0\Abstractions.pdb
 C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway.WebApi\bin\Debug\net5.0\PaymentGateway.Data.pdb
 C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway.WebApi\bin\Debug\net5.0\PaymentGateway.Models.pdb
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway.WebApi\bin\Debug\net5.0\AutoMapper.dll
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway.WebApi\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway.WebApi\bin\Debug\net5.0\MediatR.dll
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway.WebApi\bin\Debug\net5.0\MediatR.Extensions.Microsoft.DependencyInjection.dll

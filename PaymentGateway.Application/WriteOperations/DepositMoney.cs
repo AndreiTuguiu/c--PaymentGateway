@@ -47,12 +47,14 @@ namespace PaymentGateway.Application.WriteOperations
             }
 
 
-            Transaction transaction = new Transaction();
-            transaction.TransactionId = _database.Transactions.Count() + 1;
-            transaction.Currency = account.Currency;
-            transaction.Amount = request.Amount;
-            transaction.Type = TransactionType.Deposit;
-            transaction.Date = DateTime.Now;
+            Transaction transaction = new Transaction
+            {
+                TransactionId = _database.Transactions.Count() + 1,
+                Currency = account.Currency,
+                Amount = request.Amount,
+                Type = TransactionType.Deposit,
+                Date = DateTime.Now
+            };
 
 
             _database.Transactions.Add(transaction);

@@ -1,10 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "qBgIGcEM0skuXcm6Jm/uWmA2HKgxHpQFAwxWA2FvgQU9jFmIlv+LGJvuqn+Kuhx9HcmhrhuZqJvDk28yv7hC+A==",
+  "dgSpecHash": "QZA8p/mMrJyg0JOwgU4+6WA/RzuHVQAcgCGoP9P8AcM5XpDhL1Jkq0YafglWtEQ440gXRFAcTZeznttm7vvx5w==",
   "success": true,
   "projectFilePath": "C:\\Users\\andrei.tuguiu\\source\\repos\\PaymentGateway\\PaymentGateway\\PaymentGateway.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\automapper\\10.1.0\\automapper.10.1.0.nupkg.sha512",
+    "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.0\\automapper.extensions.microsoft.dependencyinjection.8.1.0.nupkg.sha512",
     "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\mediatr\\9.0.0\\mediatr.9.0.0.nupkg.sha512",
+    "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\9.0.0\\mediatr.extensions.microsoft.dependencyinjection.9.0.0.nupkg.sha512",
+    "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\microsoft.extensions.configuration\\5.0.0\\microsoft.extensions.configuration.5.0.0.nupkg.sha512",
     "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\5.0.0\\microsoft.extensions.configuration.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\microsoft.extensions.configuration.binder\\5.0.0\\microsoft.extensions.configuration.binder.5.0.0.nupkg.sha512",
@@ -16,7 +20,9 @@
     "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\5.0.0\\microsoft.extensions.fileproviders.abstractions.5.0.0.nupkg.sha512",
     "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\microsoft.extensions.fileproviders.physical\\5.0.0\\microsoft.extensions.fileproviders.physical.5.0.0.nupkg.sha512",
     "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\microsoft.extensions.filesystemglobbing\\5.0.0\\microsoft.extensions.filesystemglobbing.5.0.0.nupkg.sha512",
-    "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512"
+    "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\microsoft.extensions.options\\3.0.0\\microsoft.extensions.options.3.0.0.nupkg.sha512",
+    "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
+    "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\system.reflection.emit\\4.7.0\\system.reflection.emit.4.7.0.nupkg.sha512"
   ],
   "logs": []
 }

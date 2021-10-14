@@ -51,12 +51,14 @@ namespace PaymentGateway.Application.WriteOperations
                 throw new Exception("Invalid withdrawal amount!");
             }
 
-            Transaction transaction = new Transaction();
-            transaction.TransactionId = _database.Transactions.Count() + 1;
-            transaction.Currency = request.Currency;
-            transaction.Amount = request.Amount;
-            transaction.Date = DateTime.Now;
-            transaction.Type = TransactionType.Withdraw;
+            Transaction transaction = new Transaction
+            {
+                TransactionId = _database.Transactions.Count() + 1,
+                Currency = request.Currency,
+                Amount = request.Amount,
+                Date = DateTime.Now,
+                Type = TransactionType.Withdraw
+            };
 
             _database.Transactions.Add(transaction);
 

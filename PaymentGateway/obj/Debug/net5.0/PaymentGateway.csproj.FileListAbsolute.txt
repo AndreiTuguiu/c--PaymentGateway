@@ -39,3 +39,8 @@ C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway\bin\Debug\net5
 C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway\bin\Debug\net5.0\Microsoft.Extensions.FileSystemGlobbing.dll
 C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
 C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway\bin\Debug\net5.0\MediatR.dll
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway\bin\Debug\net5.0\AutoMapper.dll
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway\bin\Debug\net5.0\MediatR.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway\obj\Debug\net5.0\PaymentGateway.csproj.CopyComplete

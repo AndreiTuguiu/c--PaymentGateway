@@ -5,13 +5,17 @@ using PaymentGateway.PublishedLanguage.Commands;
 using System;
 using System.IO;
 using MediatR;
+using PaymentGateway.Application.Queries;
+using ExternalService;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace PaymentGateway
 {
     class Program
     {
         static IConfiguration Configuration;
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             Configuration = new ConfigurationBuilder()
                  .SetBasePath(Directory.GetCurrentDirectory())
@@ -22,6 +26,11 @@ namespace PaymentGateway
 
             // setup
             var services = new ServiceCollection();
+
+            var source = new CancellationTokenSource();
+            var cancellationToken = source.Token;
+
+            services.AddMediatR(typeof(ListOfAccounts).Assembly, typeof(AllEventHandler).Assembly);
             services.RegisterBusinessServices(Configuration);
 
             //services.AddSingleton<IEventSender, AllEventHandler>();
@@ -43,7 +52,7 @@ namespace PaymentGateway
 
             
            
-            m.Send(command, default).GetAwaiter().GetResult();
+            await m.Send(command, cancellationToken);
 
 
             var createAccountCommand = new CreateAccountCommand
@@ -57,7 +66,7 @@ namespace PaymentGateway
             
 
 
-            m.Send(createAccountCommand, default).GetAwaiter().GetResult();
+            await m.Send(createAccountCommand, cancellationToken);
 
 
             var depMonComm= new DepositMoneyCommand
@@ -69,7 +78,7 @@ namespace PaymentGateway
             };
             
 
-            m.Send(depMonComm, default).GetAwaiter().GetResult();
+            await m.Send(depMonComm, cancellationToken);
 
 
             var withdraw = new WithdrawMoneyCommand
@@ -82,7 +91,7 @@ namespace PaymentGateway
 
            
 
-            m.Send(withdraw, default).GetAwaiter().GetResult();
+            await m.Send(withdraw, cancellationToken);
 
 
             var createProduct = new CreateProductCommand
@@ -96,7 +105,7 @@ namespace PaymentGateway
 
             
 
-            m.Send(createProduct, default).GetAwaiter().GetResult();
+            await m.Send(createProduct, cancellationToken);
 
 
             var createProduct1 = new CreateProductCommand
@@ -110,7 +119,7 @@ namespace PaymentGateway
 
             
 
-            m.Send(createProduct1, default).GetAwaiter().GetResult();
+            await m.Send(createProduct1, cancellationToken);
 
 
             var purchaseProductCommand = new PurchaseProductCommand
@@ -131,7 +140,7 @@ namespace PaymentGateway
             };
 
             
-            var result = m.Send(query, default).GetAwaiter().GetResult();
+            var result =await m.Send(query, cancellationToken);
 
 
             Console.ReadLine();

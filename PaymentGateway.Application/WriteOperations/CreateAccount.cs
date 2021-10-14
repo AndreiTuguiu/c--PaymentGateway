@@ -43,10 +43,12 @@ namespace PaymentGateway.Application.WriteOperations
             }
 
 
-            Account account = new Account();
-            account.Balance = _accountOptions.InitialBalance;
-            account.Currency = request.Currency;
-            account.IbanCode = request.IbanCode;
+            Account account = new Account
+            {
+                Balance = _accountOptions.InitialBalance,
+                Currency = request.Currency,
+                IbanCode = request.IbanCode
+            };
 
             switch (request.AccountType)
             {

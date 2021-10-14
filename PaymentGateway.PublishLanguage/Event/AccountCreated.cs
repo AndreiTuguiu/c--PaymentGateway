@@ -1,6 +1,8 @@
-﻿namespace PaymentGateway.PublishedLanguage.Event
+﻿using MediatR;
+
+namespace PaymentGateway.PublishedLanguage.Event
 {
-    public class AccountCreated
+    public class AccountCreated :INotification
     {
         public string IbanCode { get; set; }
         public string AccountType { get; set; }

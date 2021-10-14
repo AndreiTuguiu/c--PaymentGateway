@@ -43,11 +43,13 @@ namespace PaymentGateway.Application.WriteOperations
 
             _database.Persons.Add(person);
 
-            Account account = new Account();
-            account.Type = AccountType.Current;
-            account.Currency = request.Currency;
-            account.Balance = 0;
-            account.IbanCode = request.IbanCode;
+            Account account = new Account
+            {
+                Type = AccountType.Current,
+                Currency = request.Currency,
+                Balance = 0,
+                IbanCode = request.IbanCode
+            };
 
             _database.Accounts.Add(account);
 

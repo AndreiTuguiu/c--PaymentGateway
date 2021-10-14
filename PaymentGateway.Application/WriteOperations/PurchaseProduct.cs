@@ -48,21 +48,25 @@ namespace PaymentGateway.Application.WriteOperations
                 throw new Exception("Not enough Balance");
             }
 
-            Transaction transaction = new Transaction();
-            transaction.Amount = totalValue;
-            transaction.Currency = currency;
-            transaction.Date = DateTime.Now;
-            transaction.Type = TransactionType.PurchaseService;
-            transaction.TransactionId = _database.Transactions.Count() + 1;
+            Transaction transaction = new Transaction
+            {
+                Amount = totalValue,
+                Currency = currency,
+                Date = DateTime.Now,
+                Type = TransactionType.PurchaseService,
+                TransactionId = _database.Transactions.Count() + 1
+            };
 
             _database.Transactions.Add(transaction);
 
             account.Balance -= totalValue;
 
-            ProductXTransaction pxt = new ProductXTransaction();
-            pxt.TransactionId = transaction.TransactionId;
-            pxt.ProductId = request.ProductId;
-            pxt.Quantity = request.Quantity;
+            ProductXTransaction pxt = new ProductXTransaction
+            {
+                TransactionId = transaction.TransactionId,
+                ProductId = request.ProductId,
+                Quantity = request.Quantity
+            };
 
             _database.ProductXTransactions.Add(pxt);
 

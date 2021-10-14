@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using ExternalService;
+using MediatR;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PaymentGateway.Application;
+using PaymentGateway.Application.Queries;
 using PaymentGateway.WebApi.Swagger;
 
 namespace PaymentGateway.WebApi
@@ -21,6 +24,12 @@ namespace PaymentGateway.WebApi
         {
             services.AddControllers();
             services.AddMvc(o => o.EnableEndpointRouting = false);
+
+            var firstAssembly = typeof(ListOfAccounts).Assembly; //handler
+            var secondAssmenbly = typeof(AllEventHandler).Assembly;//catch
+
+
+            services.AddMediatR(firstAssembly, secondAssmenbly);// get all IRequestHandler and INotification classes
            
             //services.AddSingleton<IEventSender, AllEventHandler>();
 
