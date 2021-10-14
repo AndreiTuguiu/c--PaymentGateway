@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PaymentGateway.Application.WriteOperations;
-using static PaymentGateway.Application.ReadOperations.ListOfAccounts;
+using static PaymentGateway.Application.Queries.ListOfAccounts;
 
 namespace PaymentGateway.Application
 {
