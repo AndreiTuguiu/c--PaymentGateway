@@ -171,7 +171,9 @@
       },
       "ExternalService/1.0.0": {
         "dependencies": {
-          "Abstractions": "1.0.0"
+          "Abstractions": "1.0.0",
+          "MediatR": "9.0.0",
+          "PaymentGateway.PublishedLanguage": "1.0.0"
         },
         "runtime": {
           "ExternalService.dll": {}

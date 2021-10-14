@@ -1,5 +1,4 @@
-﻿using Abstractions;
-using PaymentGateway.Data;
+﻿using PaymentGateway.Data;
 using PaymentGateway.Models;
 using PaymentGateway.PublishedLanguage.Event;
 using PaymentGateway.PublishedLanguage.Commands;
@@ -12,15 +11,15 @@ namespace PaymentGateway.Application.WriteOperations
 {
     public class EnrollCustomerOperation : IRequestHandler<EnrollCustomerCommand>
     {
-        private readonly IEventSender _eventSender;
+        private readonly IMediator _mediator;
         private readonly Database _database;
-        public EnrollCustomerOperation(IEventSender eventSender,Database database)
+        public EnrollCustomerOperation(IMediator mediator,Database database)
         {
-            _eventSender = eventSender;
+            _mediator = mediator;
             _database = database;
         }
 
-        public Task<Unit> Handle(EnrollCustomerCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(EnrollCustomerCommand request, CancellationToken cancellationToken)
         {
             var person = new Person
             {
@@ -54,9 +53,9 @@ namespace PaymentGateway.Application.WriteOperations
 
             _database.SaveChanges();
             CustomerEnrolled eventCustEnroll = new(request.Name, request.UniqueIdentifier, request.ClientType);
-            _eventSender.SendEvent(eventCustEnroll);
+            await _mediator.Publish(eventCustEnroll, cancellationToken);
 
-            return Unit.Task;
+            return Unit.Value;
         }
 
     }

@@ -1,6 +1,4 @@
-﻿using Abstractions;
-using ExternalService;
-using Microsoft.AspNetCore.Builder;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,7 +22,7 @@ namespace PaymentGateway.WebApi
             services.AddControllers();
             services.AddMvc(o => o.EnableEndpointRouting = false);
            
-            services.AddSingleton<IEventSender, EventSender>();
+            //services.AddSingleton<IEventSender, AllEventHandler>();
 
             services.RegisterBusinessServices(Configuration);
             services.AddSwagger(Configuration["Indentity:Authority"]);

@@ -1,5 +1,4 @@
-﻿using Abstractions;
-using PaymentGateway.Data;
+﻿using PaymentGateway.Data;
 using PaymentGateway.Models;
 using PaymentGateway.PublishedLanguage.Event;
 using PaymentGateway.PublishedLanguage.Commands;
@@ -13,15 +12,15 @@ namespace PaymentGateway.Application.WriteOperations
 {
     public class DepositMoney : IRequestHandler<DepositMoneyCommand>
     {
-        private readonly IEventSender _eventSender;
+        private readonly IMediator _mediator;
         private readonly Database _database;
-        public DepositMoney(IEventSender eventSender,Database database)
+        public DepositMoney(IMediator mediator,Database database)
         {
-            _eventSender = eventSender;
+            _mediator = mediator;
             _database = database;
         }
 
-        public Task<Unit> Handle(DepositMoneyCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(DepositMoneyCommand request, CancellationToken cancellationToken)
         {
             Account account;
             if (request.AccountId.HasValue)
@@ -63,9 +62,9 @@ namespace PaymentGateway.Application.WriteOperations
             _database.SaveChanges();
 
             DepositedMoney depMoney = new(request.IbanConde, account.Balance, request.Currency);
-            _eventSender.SendEvent(depMoney);
+            await _mediator.Publish(depMoney, cancellationToken);
 
-            return Unit.Task;
+            return Unit.Value;
         }
 
         

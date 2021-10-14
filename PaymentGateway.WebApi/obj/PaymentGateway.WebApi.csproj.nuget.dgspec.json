@@ -94,6 +94,9 @@
             "projectReferences": {
               "C:\\Users\\andrei.tuguiu\\source\\repos\\PaymentGateway\\Abstractions\\Abstractions.csproj": {
                 "projectPath": "C:\\Users\\andrei.tuguiu\\source\\repos\\PaymentGateway\\Abstractions\\Abstractions.csproj"
+              },
+              "C:\\Users\\andrei.tuguiu\\source\\repos\\PaymentGateway\\PaymentGateway.PublishLanguage\\PaymentGateway.PublishedLanguage.csproj": {
+                "projectPath": "C:\\Users\\andrei.tuguiu\\source\\repos\\PaymentGateway\\PaymentGateway.PublishLanguage\\PaymentGateway.PublishedLanguage.csproj"
               }
             }
           }
@@ -107,6 +110,12 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "MediatR": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",

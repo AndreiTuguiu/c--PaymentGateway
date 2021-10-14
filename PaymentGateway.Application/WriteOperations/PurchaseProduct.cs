@@ -1,5 +1,4 @@
-﻿using Abstractions;
-using PaymentGateway.Data;
+﻿using PaymentGateway.Data;
 using PaymentGateway.Models;
 using PaymentGateway.PublishedLanguage.Event;
 using PaymentGateway.PublishedLanguage.Commands;
@@ -13,15 +12,15 @@ namespace PaymentGateway.Application.WriteOperations
 {
     public class PurchaseProduct : IRequestHandler<PurchaseProductCommand>
     {
-        private readonly IEventSender _eventSender;
+        private readonly IMediator _mediator;
         private readonly Database _database;
-        public PurchaseProduct(IEventSender eventSender, Database database)
+        public PurchaseProduct(IMediator mediator, Database database)
         {
-            _eventSender = eventSender;
+            _mediator = mediator;
             _database = database;
         }
 
-        public Task<Unit> Handle(PurchaseProductCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(PurchaseProductCommand request, CancellationToken cancellationToken)
         {
             var account = _database.Accounts.FirstOrDefault(x => x.AccountId == request.AccountId);
 
@@ -70,8 +69,8 @@ namespace PaymentGateway.Application.WriteOperations
             _database.SaveChanges();
 
             ProductPurchased productPurchased = new(account.AccountId, pxt.ProductId, pxt.Quantity, totalValue);
-            _eventSender.SendEvent(productPurchased);
-            return Unit.Task;
+            await _mediator.Publish(productPurchased,cancellationToken);
+            return Unit.Value;
         }
 
     }

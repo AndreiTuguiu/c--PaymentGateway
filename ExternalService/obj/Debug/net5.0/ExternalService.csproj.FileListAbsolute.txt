@@ -13,3 +13,5 @@ C:\Users\andrei.tuguiu\source\repos\PaymentGateway\ExternalService\obj\Debug\net
 C:\Users\andrei.tuguiu\source\repos\PaymentGateway\ExternalService\obj\Debug\net5.0\ExternalService.dll
 C:\Users\andrei.tuguiu\source\repos\PaymentGateway\ExternalService\obj\Debug\net5.0\ref\ExternalService.dll
 C:\Users\andrei.tuguiu\source\repos\PaymentGateway\ExternalService\obj\Debug\net5.0\ExternalService.pdb
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\ExternalService\bin\Debug\net5.0\PaymentGateway.PublishedLanguage.dll
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\ExternalService\bin\Debug\net5.0\PaymentGateway.PublishedLanguage.pdb

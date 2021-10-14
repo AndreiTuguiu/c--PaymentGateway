@@ -1,13 +1,10 @@
-﻿using Abstractions;
-using ExternalService;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using PaymentGateway.Application;
-using PaymentGateway.Application.Queries;
-using PaymentGateway.Application.WriteOperations;
 using PaymentGateway.PublishedLanguage.Commands;
 using System;
 using System.IO;
+using MediatR;
 
 namespace PaymentGateway
 {
@@ -27,12 +24,12 @@ namespace PaymentGateway
             var services = new ServiceCollection();
             services.RegisterBusinessServices(Configuration);
 
-            services.AddSingleton<IEventSender, EventSender>();
+            //services.AddSingleton<IEventSender, AllEventHandler>();
             services.AddSingleton(Configuration);
 
             // build
             var serviceProvider = services.BuildServiceProvider();
-
+            var m = serviceProvider.GetRequiredService<IMediator>();
             // use
             var command = new EnrollCustomerCommand
             {
@@ -44,9 +41,9 @@ namespace PaymentGateway
                 IbanCode= "RO987654321"
             };
 
-            var client = serviceProvider.GetRequiredService<EnrollCustomerOperation>();
+            
            
-            client.Handle(command, default).GetAwaiter().GetResult();
+            m.Send(command, default).GetAwaiter().GetResult();
 
 
             var createAccountCommand = new CreateAccountCommand
@@ -57,10 +54,10 @@ namespace PaymentGateway
                 Currency = "RON"
                 
             };
-            var createAccount = serviceProvider.GetRequiredService<CreateAccount>();
+            
 
 
-            createAccount.Handle(createAccountCommand, default).GetAwaiter().GetResult();
+            m.Send(createAccountCommand, default).GetAwaiter().GetResult();
 
 
             var depMonComm= new DepositMoneyCommand
@@ -70,9 +67,9 @@ namespace PaymentGateway
                 Amount = 10000,
                 Currency="RON"
             };
-            var depMon = serviceProvider.GetRequiredService<DepositMoney>();
+            
 
-            depMon.Handle(depMonComm, default).GetAwaiter().GetResult();
+            m.Send(depMonComm, default).GetAwaiter().GetResult();
 
 
             var withdraw = new WithdrawMoneyCommand
@@ -83,9 +80,9 @@ namespace PaymentGateway
                 Currency = "RON"
             };
 
-            var withdrawMoney = serviceProvider.GetRequiredService<WithdrawMoney>();
+           
 
-            withdrawMoney.Handle(withdraw, default).GetAwaiter().GetResult();
+            m.Send(withdraw, default).GetAwaiter().GetResult();
 
 
             var createProduct = new CreateProductCommand
@@ -97,9 +94,9 @@ namespace PaymentGateway
                 Limit = 4
             };
 
-            var product = serviceProvider.GetRequiredService<CreateProduct>();
+            
 
-            product.Handle(createProduct, default).GetAwaiter().GetResult();
+            m.Send(createProduct, default).GetAwaiter().GetResult();
 
 
             var createProduct1 = new CreateProductCommand
@@ -111,9 +108,9 @@ namespace PaymentGateway
                 Limit = 3
             };
 
-            var product1 = serviceProvider.GetRequiredService<CreateProduct>();
+            
 
-            product1.Handle(createProduct1, default).GetAwaiter().GetResult();
+            m.Send(createProduct1, default).GetAwaiter().GetResult();
 
 
             var purchaseProductCommand = new PurchaseProductCommand
@@ -123,9 +120,9 @@ namespace PaymentGateway
                 Quantity = 3
             };
 
-            var purchase = serviceProvider.GetRequiredService<PurchaseProduct>();
+            
 
-            purchase.Handle(purchaseProductCommand, default).GetAwaiter().GetResult();
+            m.Send(purchaseProductCommand, default).GetAwaiter().GetResult();
 
 
             var query = new Application.Queries.ListOfAccounts.Query
@@ -133,8 +130,8 @@ namespace PaymentGateway
                 PersonId = 1
             };
 
-            var handler = serviceProvider.GetRequiredService<ListOfAccounts.QueryHandler>();
-            var result = handler.Handle(query, default).GetAwaiter().GetResult();
+            
+            var result = m.Send(query, default).GetAwaiter().GetResult();
 
 
             Console.ReadLine();
