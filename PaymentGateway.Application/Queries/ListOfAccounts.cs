@@ -33,15 +33,15 @@ namespace PaymentGateway.Application.Queries
         {
             public Validator2(Database database)
             {
-                RuleFor(q => q.PersonId).Must(personId =>
+                RuleFor(q => q).Must(person =>
                 {
-                    return personId.HasValue;
-                }).WithMessage("Customer data is invalid - personid");
+                    return person.PersonId.HasValue || !string.IsNullOrEmpty(person.Cnp) ;
+                }).WithMessage("Customer data is invalid ");
 
-                RuleFor(q => q.Cnp).Must(cnp =>
-                {
-                    return string.IsNullOrEmpty(cnp);
-                }).WithMessage("CNP is empty");
+                //RuleFor(q => q.Cnp).Must(cnp =>
+                //{
+                //    return !string.IsNullOrEmpty(cnp);
+                //}).WithMessage("CNP is empty");
 
                 RuleFor(q => q.PersonId).Must(personId =>
                 {
