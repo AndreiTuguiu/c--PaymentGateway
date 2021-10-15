@@ -155,7 +155,7 @@ namespace PaymentGateway
             m.Send(purchaseProductCommand, default).GetAwaiter().GetResult();
 
 
-            var query = new Application.Queries.ListOfAccounts.Query
+            var query = new ListOfAccounts.Query
             {
                 PersonId = 1
             };

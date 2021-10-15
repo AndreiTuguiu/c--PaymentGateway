@@ -40,7 +40,7 @@ namespace PaymentGateway.Application.Queries
 
                 RuleFor(q => q.Cnp).Must(cnp =>
                 {
-                    return !string.IsNullOrEmpty(cnp);
+                    return string.IsNullOrEmpty(cnp);
                 }).WithMessage("CNP is empty");
 
                 RuleFor(q => q.PersonId).Must(personId =>
