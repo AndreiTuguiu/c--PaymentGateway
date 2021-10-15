@@ -11,6 +11,8 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.Reflection;
 using PaymentGateway.PublishedLanguage.Event;
+using FluentValidation;
+using MediatR.Pipeline;
 
 namespace PaymentGateway
 {
@@ -34,7 +36,18 @@ namespace PaymentGateway
 
             services.RegisterBusinessServices(Configuration);
 
+            services.Scan(scan => scan
+            .FromAssemblyOf<ListOfAccounts>()
+            .AddClasses(classes => classes.AssignableTo<IValidator>())
+            .AsImplementedInterfaces()
+            .WithScopedLifetime());
+
+
             services.AddMediatR(typeof(ListOfAccounts).Assembly, typeof(AllEventHandler).Assembly);
+            services.AddScoped(typeof(IPipelineBehavior<,>), typeof(RequestPreProcessorBehavior<,>));
+            services.AddScoped(typeof(IPipelineBehavior<,>), typeof(RequestPostProcessorBehavior<,>));
+
+
             services.AddScopedContravariant<INotificationHandler<INotification>, AllEventHandler>(typeof(CustomerEnrolled).Assembly);
 
             //services.AddSingleton<IEventSender, AllEventHandler>();
