@@ -10,6 +10,7 @@ using PaymentGateway.Application;
 using PaymentGateway.Application.Queries;
 using PaymentGateway.PublishedLanguage.Event;
 using PaymentGateway.WebApi.MediatorPipeline;
+using PaymentGateway.WebApi.Middleware;
 using PaymentGateway.WebApi.Swagger;
 
 namespace PaymentGateway.WebApi
@@ -55,6 +56,7 @@ namespace PaymentGateway.WebApi
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IConfiguration configuration)
         {
+            app.UseMiddleware<ErrorMiddleware>();//error
             app.UseCors(cors =>
             {
                 cors
