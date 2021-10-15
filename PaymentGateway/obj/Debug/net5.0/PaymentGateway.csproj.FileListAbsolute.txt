@@ -43,3 +43,7 @@ C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway\bin\Debug\net5
 C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway\bin\Debug\net5.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway\bin\Debug\net5.0\MediatR.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway\bin\Debug\net5.0\Microsoft.Extensions.Options.dll
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway\bin\Debug\net5.0\FluentValidation.dll
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway\bin\Debug\net5.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway\bin\Debug\net5.0\Scrutor.dll
+C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway\obj\Debug\net5.0\PaymentGateway.csproj.CopyComplete

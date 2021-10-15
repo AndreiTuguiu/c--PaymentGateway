@@ -13,6 +13,7 @@ using System.Reflection;
 using PaymentGateway.PublishedLanguage.Event;
 using FluentValidation;
 using MediatR.Pipeline;
+using PaymentGateway.WebApi.MediatorPipeline;
 
 namespace PaymentGateway
 {
@@ -43,12 +44,15 @@ namespace PaymentGateway
             .WithScopedLifetime());
 
 
-            services.AddMediatR(typeof(ListOfAccounts).Assembly, typeof(AllEventHandler).Assembly);
+            
             services.AddScoped(typeof(IPipelineBehavior<,>), typeof(RequestPreProcessorBehavior<,>));
             services.AddScoped(typeof(IPipelineBehavior<,>), typeof(RequestPostProcessorBehavior<,>));
+            services.AddScoped(typeof(IRequestPreProcessor<>), typeof(ValidationPreProcessor<>));
 
 
             services.AddScopedContravariant<INotificationHandler<INotification>, AllEventHandler>(typeof(CustomerEnrolled).Assembly);
+
+            services.AddMediatR(typeof(ListOfAccounts).Assembly, typeof(AllEventHandler).Assembly);
 
             //services.AddSingleton<IEventSender, AllEventHandler>();
             services.AddSingleton(Configuration);
