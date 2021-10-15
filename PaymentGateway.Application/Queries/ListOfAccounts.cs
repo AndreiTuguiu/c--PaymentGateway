@@ -35,12 +35,8 @@ namespace PaymentGateway.Application.Queries
             {
                 RuleFor(q => q).Must(query =>
                  {
-                     var person = query.PersonId.HasValue ?
-                     _database.Persons.FirstOrDefault(x => x.PersonId == query.PersonId) :
-                     _database.Persons.FirstOrDefault(x => x.CNP == query.Cnp);
-
-                     return person != null;
-                 }).WithMessage("Customer not found");
+                     return query.PersonId.HasValue && !string.IsNullOrEmpty(query.Cnp);
+                 }).WithMessage("Customer data is invalid");
             }
         }
         public class Query:IRequest<List<Model>>
