@@ -9,11 +9,11 @@ using PaymentGateway.Application.Queries;
 using ExternalService;
 using System.Threading.Tasks;
 using System.Threading;
-using System.Reflection;
 using PaymentGateway.PublishedLanguage.Event;
 using FluentValidation;
 using MediatR.Pipeline;
 using PaymentGateway.WebApi.MediatorPipeline;
+using PaymentGateway.Data;
 
 namespace PaymentGateway
 {
@@ -36,6 +36,7 @@ namespace PaymentGateway
             var cancellationToken = source.Token;
 
             services.RegisterBusinessServices(Configuration);
+            services.AddPaymentDataAccess(Configuration);
 
             services.Scan(scan => scan
             .FromAssemblyOf<ListOfAccounts>()
@@ -59,6 +60,7 @@ namespace PaymentGateway
 
             // build
             var serviceProvider = services.BuildServiceProvider();
+            //var database = serviceProvider.GetRequiredService<PaymentDbContext>();
             var m = serviceProvider.GetRequiredService<IMediator>();
             // use
             var command = new EnrollCustomerCommand

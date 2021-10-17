@@ -13,16 +13,16 @@ namespace PaymentGateway.Application.CommandHandlers
     public class PurchaseProduct : IRequestHandler<PurchaseProductCommand>
     {
         private readonly IMediator _mediator;
-        private readonly Database _database;
-        public PurchaseProduct(IMediator mediator, Database database)
+        private readonly PaymentDbContext _dbContext;
+        public PurchaseProduct(IMediator mediator, PaymentDbContext dbContext)
         {
             _mediator = mediator;
-            _database = database;
+            _dbContext = dbContext;
         }
 
         public async Task<Unit> Handle(PurchaseProductCommand request, CancellationToken cancellationToken)
         {
-            var account = _database.Accounts.FirstOrDefault(x => x.AccountId == request.AccountId);
+            var account = _dbContext.Accounts.FirstOrDefault(x => x.AccountId == request.AccountId);
 
             if (account == null)
             {
@@ -30,7 +30,7 @@ namespace PaymentGateway.Application.CommandHandlers
             }
             double totalValue;
             string currency;
-            var product = _database.Products.FirstOrDefault(x => x.ProductId == request.ProductId);
+            var product = _dbContext.Products.FirstOrDefault(x => x.ProductId == request.ProductId);
             if (product == null)
             {
                 throw new Exception("Product not found");
@@ -54,10 +54,10 @@ namespace PaymentGateway.Application.CommandHandlers
                 Currency = currency,
                 Date = DateTime.Now,
                 Type = TransactionType.PurchaseService,
-                TransactionId = _database.Transactions.Count() + 1
+                TransactionId = _dbContext.Transactions.Count() + 1
             };
 
-            _database.Transactions.Add(transaction);
+            _dbContext.Transactions.Add(transaction);
 
             account.Balance -= totalValue;
 
@@ -68,9 +68,9 @@ namespace PaymentGateway.Application.CommandHandlers
                 Quantity = request.Quantity
             };
 
-            _database.ProductXTransactions.Add(pxt);
+            _dbContext.ProductXTransactions.Add(pxt);
 
-            _database.SaveChanges();
+            _dbContext.SaveChanges();
 
             ProductPurchased productPurchased = new(account.AccountId, pxt.ProductId, pxt.Quantity, totalValue);
             await _mediator.Publish(productPurchased,cancellationToken);

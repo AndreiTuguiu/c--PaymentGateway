@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "/YpNXcA4H1Unqx2rUJvo8jIKBEe6UEqN8msDcukHikgPOOK0Hh52naqg8mTfisTh36SWevBzby1jn11TVcFarg==",
+  "dgSpecHash": "cnZRF/LOClNsPsi0sYkr2AkPfq19OiykQ1+lhZo/yYy7iO0myksjq3DgKdC0ed8UOLbxnvvC6ab7BvRIGfEKKw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\andrei.tuguiu\\source\\repos\\PaymentGateway\\PaymentGateway.PublishLanguage\\PaymentGateway.PublishedLanguage.csproj",
+  "projectFilePath": "C:\\Users\\Crazzy\\source\\repos\\c--PaymentGateway\\PaymentGateway.PublishLanguage\\PaymentGateway.PublishedLanguage.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\mediatr\\9.0.0\\mediatr.9.0.0.nupkg.sha512"
+    "C:\\Users\\Crazzy\\.nuget\\packages\\mediatr\\9.0.0\\mediatr.9.0.0.nupkg.sha512"
   ],
   "logs": []
 }

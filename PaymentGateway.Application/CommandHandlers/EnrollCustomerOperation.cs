@@ -6,17 +6,18 @@ using System;
 using MediatR;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Linq;
 
 namespace PaymentGateway.Application.CommandHandlers
 {
     public class EnrollCustomerOperation : IRequestHandler<EnrollCustomerCommand>
     {
         private readonly IMediator _mediator;
-        private readonly Database _database;
-        public EnrollCustomerOperation(IMediator mediator,Database database)
+        private readonly PaymentDbContext _dbContext;
+        public EnrollCustomerOperation(IMediator mediator,PaymentDbContext dbContext)
         {
             _mediator = mediator;
-            _database = database;
+            _dbContext = dbContext;
         }
 
         public async Task<Unit> Handle(EnrollCustomerCommand request, CancellationToken cancellationToken)
@@ -39,9 +40,9 @@ namespace PaymentGateway.Application.CommandHandlers
                 throw new Exception("Unsupport person type!");
             }
 
-            person.PersonId = _database.Persons.Count + 1;
+            person.PersonId = _dbContext.Persons.Count() + 1;
 
-            _database.Persons.Add(person);
+            _dbContext.Persons.Add(person);
 
             Account account = new Account
             {
@@ -51,9 +52,9 @@ namespace PaymentGateway.Application.CommandHandlers
                 IbanCode = request.IbanCode
             };
 
-            _database.Accounts.Add(account);
+            _dbContext.Accounts.Add(account);
 
-            _database.SaveChanges();
+            _dbContext.SaveChanges();
             CustomerEnrolled eventCustEnroll = new(request.Name, request.UniqueIdentifier, request.ClientType);
             await _mediator.Publish(eventCustEnroll, cancellationToken);
 

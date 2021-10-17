@@ -12,15 +12,15 @@ namespace PaymentGateway.Application.CommandHandlers
 {
     public class CreateAccount: IRequestHandler<CreateAccountCommand>
     {
-        private readonly Database _database;
+        private readonly PaymentDbContext _dbContext;
         private readonly IMediator _mediator;
         private readonly AccountOptions _accountOptions;
 
-        public CreateAccount(IMediator mediator, AccountOptions accountOptions,Database database)
+        public CreateAccount(IMediator mediator, AccountOptions accountOptions,PaymentDbContext dbContext)
         {
             _mediator = mediator;
             _accountOptions = accountOptions;
-            _database = database;
+            _dbContext = dbContext;
         }
 
         public async Task<Unit> Handle(CreateAccountCommand request, CancellationToken cancellationToken)
@@ -31,11 +31,11 @@ namespace PaymentGateway.Application.CommandHandlers
 
             if (request.PersonId.HasValue)
             {
-                person = _database.Persons.FirstOrDefault(x => x.PersonId == request.PersonId);
+                person = _dbContext.Persons.FirstOrDefault(x => x.PersonId == request.PersonId);
             }
             else
             {
-                person = _database.Persons.FirstOrDefault(x => x.CNP == request.Cnp);
+                person = _dbContext.Persons.FirstOrDefault(x => x.CNP == request.Cnp);
             }
             if (person == null)
             {
@@ -68,11 +68,11 @@ namespace PaymentGateway.Application.CommandHandlers
             account.Status = AccountStatus.Active;
             account.PersondId = person.PersonId;
 
-            account.AccountId = _database.Accounts.Count + 1;
+            account.AccountId = _dbContext.Accounts.Count() + 1;
 
-            _database.Accounts.Add(account);
+            _dbContext.Accounts.Add(account);
 
-            _database.SaveChanges();
+            _dbContext.SaveChanges();
 
             AccountCreated accountCreated = new(request.IbanCode, request.AccountType);
             await _mediator.Publish(accountCreated,cancellationToken);

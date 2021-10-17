@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "B3+bElUqz8sOdoiyeBrELc5ESMYJ2D+P7iQ+PmVnGRBq9fZ+U+TVvxsOO/maYOD4cL84VK1rnyqUeF3yzAHHtQ==",
+  "dgSpecHash": "IVRSSX+t2eaBkcj0sA/4vtzKrM6yXCKUJG1L5Km7X+6xz6TimRNFQO0A+IvP6VK97Elinhc9cxNawoB+IDmlmw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\andrei.tuguiu\\source\\repos\\PaymentGateway\\PaymentGateway.Models\\PaymentGateway.Models.csproj",
+  "projectFilePath": "C:\\Users\\Crazzy\\source\\repos\\c--PaymentGateway\\PaymentGateway.Models\\PaymentGateway.Models.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

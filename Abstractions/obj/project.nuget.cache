@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "5SilpcXB0/XM2+go+FAj/FI2azBjQdjIiIc4LpSXcdb67gkC0iJrFm5xf3yVgFYRrEk8F36cc25X2PYLowObUQ==",
+  "dgSpecHash": "gUI179L1ZsOpqZEnQTxp0W58h2/F3XOO+g/fe/ciJEBcvRyYAwvcFwmnyEVny+iCqhwnJqCC2dhUYzZFtw9jdA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\andrei.tuguiu\\source\\repos\\PaymentGateway\\Abstractions\\Abstractions.csproj",
+  "projectFilePath": "C:\\Users\\Crazzy\\source\\repos\\c--PaymentGateway\\Abstractions\\Abstractions.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

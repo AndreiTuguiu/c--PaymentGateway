@@ -13,11 +13,11 @@ namespace PaymentGateway.Application.CommandHandlers
     public class DepositMoney : IRequestHandler<DepositMoneyCommand>
     {
         private readonly IMediator _mediator;
-        private readonly Database _database;
-        public DepositMoney(IMediator mediator,Database database)
+        private readonly PaymentDbContext _dbContext;
+        public DepositMoney(IMediator mediator,PaymentDbContext dbContext)
         {
             _mediator = mediator;
-            _database = database;
+            _dbContext = dbContext;
         }
 
         public async Task<Unit> Handle(DepositMoneyCommand request, CancellationToken cancellationToken)
@@ -25,11 +25,11 @@ namespace PaymentGateway.Application.CommandHandlers
             Account account;
             if (request.AccountId.HasValue)
             {
-                account = _database.Accounts.FirstOrDefault(x => x.AccountId == request.AccountId);
+                account = _dbContext.Accounts.FirstOrDefault(x => x.AccountId == request.AccountId);
             }
             else
             {
-                account = _database.Accounts.FirstOrDefault(x => x.IbanCode == request.IbanConde);
+                account = _dbContext.Accounts.FirstOrDefault(x => x.IbanCode == request.IbanConde);
             }
             if (account == null)
             {
@@ -43,13 +43,13 @@ namespace PaymentGateway.Application.CommandHandlers
 
             if (!String.IsNullOrEmpty(request.Currency))
             {
-                account = _database.Accounts.FirstOrDefault(x => x.Currency == request.Currency);
+                account = _dbContext.Accounts.FirstOrDefault(x => x.Currency == request.Currency);
             }
 
 
             Transaction transaction = new Transaction
             {
-                TransactionId = _database.Transactions.Count() + 1,
+                TransactionId = _dbContext.Transactions.Count() + 1,
                 Currency = account.Currency,
                 Amount = request.Amount,
                 Type = TransactionType.Deposit,
@@ -57,11 +57,11 @@ namespace PaymentGateway.Application.CommandHandlers
             };
 
 
-            _database.Transactions.Add(transaction);
+            _dbContext.Transactions.Add(transaction);
 
             account.Balance = account.Balance + transaction.Amount;
 
-            _database.SaveChanges();
+            _dbContext.SaveChanges();
 
             DepositedMoney depMoney = new(request.IbanConde, account.Balance, request.Currency);
             await _mediator.Publish(depMoney, cancellationToken);

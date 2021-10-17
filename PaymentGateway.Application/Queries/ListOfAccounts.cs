@@ -1,5 +1,4 @@
-﻿using Abstractions;
-using PaymentGateway.Data;
+﻿using PaymentGateway.Data;
 using PaymentGateway.Models;
 using System;
 using System.Collections.Generic;
@@ -15,13 +14,13 @@ namespace PaymentGateway.Application.Queries
     {
         public class Validator : AbstractValidator<Query>
         {
-            public Validator(Database _database)
+            public Validator(PaymentDbContext _dbContext)
             {
                 RuleFor(q => q).Must(query =>
                 {
                     var person = query.PersonId.HasValue ?
-                    _database.Persons.FirstOrDefault(x => x.PersonId == query.PersonId) :
-                    _database.Persons.FirstOrDefault(x => x.CNP == query.Cnp);
+                    _dbContext.Persons.FirstOrDefault(x => x.PersonId == query.PersonId) :
+                    _dbContext.Persons.FirstOrDefault(x => x.CNP == query.Cnp);
 
                     return person != null;
                 }).WithMessage("Customer not found");
@@ -31,7 +30,7 @@ namespace PaymentGateway.Application.Queries
 
         public class Validator2: AbstractValidator<Query>
         {
-            public Validator2(Database database)
+            public Validator2(PaymentDbContext dbContext)
             {
                 RuleFor(q => q).Must(person =>
                 {
@@ -45,7 +44,7 @@ namespace PaymentGateway.Application.Queries
 
                 RuleFor(q => q.PersonId).Must(personId =>
                 {
-                    var exists = database.Persons.Any(x => x.PersonId == personId);
+                    var exists = dbContext.Persons.Any(x => x.PersonId == personId);
                     return exists;
                 }).WithMessage("Customer does not exist");
             }
@@ -58,27 +57,27 @@ namespace PaymentGateway.Application.Queries
 
         public class QueryHandler : IRequestHandler<Query, List<Model>>
         {
-            private readonly Database _database;
+            private readonly PaymentDbContext _dbContext;
             
 
-            public QueryHandler(Database database)
+            public QueryHandler(PaymentDbContext dbContext)
             {
-                _database = database;
+                _dbContext = dbContext;
                 
             }
             public Task<List<Model>> Handle(Query request, CancellationToken cancellationToken)
             {
                
                 var person = request.PersonId.HasValue ?
-                    _database.Persons.FirstOrDefault(x => x.PersonId == request.PersonId) :
-                    _database.Persons.FirstOrDefault(x => x.CNP == request.Cnp);
+                    _dbContext.Persons.FirstOrDefault(x => x.PersonId == request.PersonId) :
+                    _dbContext.Persons.FirstOrDefault(x => x.CNP == request.Cnp);
 
                 if(person == null)
                 {
                     throw new Exception("person not found");
                 }
 
-                var db = _database.Accounts.Where(x => x.PersondId == person.PersonId);
+                var db = _dbContext.Accounts.Where(x => x.PersondId == person.PersonId);
                 var result = db.Select(x => new Model
                 {
                     Balance = x.Balance,

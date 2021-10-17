@@ -13,11 +13,11 @@ namespace PaymentGateway.Application.CommandHandlers
     public class WithdrawMoney : IRequestHandler<WithdrawMoneyCommand>
     {
         private readonly IMediator _mediator;
-        private readonly Database _database;
-        public WithdrawMoney(IMediator mediator,Database database)
+        private readonly PaymentDbContext _dbContext;
+        public WithdrawMoney(IMediator mediator,PaymentDbContext dbContext)
         {
             _mediator = mediator;
-            _database = database;
+            _dbContext = dbContext;
         }
 
         public async Task<Unit> Handle(WithdrawMoneyCommand request, CancellationToken cancellationToken)
@@ -25,11 +25,11 @@ namespace PaymentGateway.Application.CommandHandlers
             Account account;
             if (request.AccountId.HasValue)
             {
-                account = _database.Accounts.FirstOrDefault(x => x.AccountId == request.AccountId);
+                account = _dbContext.Accounts.FirstOrDefault(x => x.AccountId == request.AccountId);
             }
             else
             {
-                account = _database.Accounts.FirstOrDefault(x => x.IbanCode == request.IbanConde);
+                account = _dbContext.Accounts.FirstOrDefault(x => x.IbanCode == request.IbanConde);
             }
             if (account == null)
             {
@@ -43,7 +43,7 @@ namespace PaymentGateway.Application.CommandHandlers
 
             if (!String.IsNullOrEmpty(request.Currency))
             {
-                account = _database.Accounts.FirstOrDefault(x => x.Currency == request.Currency);
+                account = _dbContext.Accounts.FirstOrDefault(x => x.Currency == request.Currency);
             }
 
             if (account.Balance < request.Amount)
@@ -53,18 +53,18 @@ namespace PaymentGateway.Application.CommandHandlers
 
             Transaction transaction = new Transaction
             {
-                TransactionId = _database.Transactions.Count() + 1,
+                TransactionId = _dbContext.Transactions.Count() + 1,
                 Currency = request.Currency,
                 Amount = request.Amount,
                 Date = DateTime.Now,
                 Type = TransactionType.Withdraw
             };
 
-            _database.Transactions.Add(transaction);
+            _dbContext.Transactions.Add(transaction);
 
             account.Balance = account.Balance - transaction.Amount;
 
-            _database.SaveChanges();
+            _dbContext.SaveChanges();
 
             WithDrawnMoney withDrawnMoney = new(account.IbanCode, account.Balance, account.Currency);
             await _mediator.Publish(withDrawnMoney,cancellationToken);
