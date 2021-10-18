@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "cPq/If3ZvHCw5D5sG/iTGwIVj3sXUtT8FcWb9oVy1hSBx4fGSPW4EIPNg2nlV8KN1CklqqH4hJgc2WOSgvgA3w==",
+  "dgSpecHash": "C7tBKjc8xbC8r+O4j6a0jM25fjG7cM3dZcXiPFbx8ElgdKI8OahBF07TSatzAqH87yf2T+MgLBnAPTyk/Upw/w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Crazzy\\source\\repos\\c--PaymentGateway\\ExternalService\\ExternalService.csproj",
+  "projectFilePath": "C:\\Users\\andrei.tuguiu\\Source\\Repos\\c--PaymentGateway\\ExternalService\\ExternalService.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Crazzy\\.nuget\\packages\\mediatr\\9.0.0\\mediatr.9.0.0.nupkg.sha512"
+    "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\mediatr\\9.0.0\\mediatr.9.0.0.nupkg.sha512"
   ],
   "logs": []
 }

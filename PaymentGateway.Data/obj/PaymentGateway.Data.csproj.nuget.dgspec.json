@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Crazzy\\source\\repos\\c--PaymentGateway\\PaymentGateway.Data\\PaymentGateway.Data.csproj": {}
+    "C:\\Users\\andrei.tuguiu\\Source\\Repos\\c--PaymentGateway\\PaymentGateway.Data\\PaymentGateway.Data.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Crazzy\\source\\repos\\c--PaymentGateway\\PaymentGateway.Data\\PaymentGateway.Data.csproj": {
+    "C:\\Users\\andrei.tuguiu\\Source\\Repos\\c--PaymentGateway\\PaymentGateway.Data\\PaymentGateway.Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Crazzy\\source\\repos\\c--PaymentGateway\\PaymentGateway.Data\\PaymentGateway.Data.csproj",
+        "projectUniqueName": "C:\\Users\\andrei.tuguiu\\Source\\Repos\\c--PaymentGateway\\PaymentGateway.Data\\PaymentGateway.Data.csproj",
         "projectName": "PaymentGateway.Data",
-        "projectPath": "C:\\Users\\Crazzy\\source\\repos\\c--PaymentGateway\\PaymentGateway.Data\\PaymentGateway.Data.csproj",
-        "packagesPath": "C:\\Users\\Crazzy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Crazzy\\source\\repos\\c--PaymentGateway\\PaymentGateway.Data\\obj\\",
+        "projectPath": "C:\\Users\\andrei.tuguiu\\Source\\Repos\\c--PaymentGateway\\PaymentGateway.Data\\PaymentGateway.Data.csproj",
+        "packagesPath": "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\andrei.tuguiu\\Source\\Repos\\c--PaymentGateway\\PaymentGateway.Data\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Crazzy\\source\\repos\\c--PaymentGateway\\NuGet.Config",
-          "C:\\Users\\Crazzy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\andrei.tuguiu\\Source\\Repos\\c--PaymentGateway\\NuGet.Config",
+          "C:\\Users\\andrei.tuguiu\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -33,8 +33,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\Crazzy\\source\\repos\\c--PaymentGateway\\PaymentGateway.Models\\PaymentGateway.Models.csproj": {
-                "projectPath": "C:\\Users\\Crazzy\\source\\repos\\c--PaymentGateway\\PaymentGateway.Models\\PaymentGateway.Models.csproj"
+              "C:\\Users\\andrei.tuguiu\\Source\\Repos\\c--PaymentGateway\\PaymentGateway.Models\\PaymentGateway.Models.csproj": {
+                "projectPath": "C:\\Users\\andrei.tuguiu\\Source\\Repos\\c--PaymentGateway\\PaymentGateway.Models\\PaymentGateway.Models.csproj"
               }
             }
           }
@@ -69,25 +69,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Crazzy\\source\\repos\\c--PaymentGateway\\PaymentGateway.Models\\PaymentGateway.Models.csproj": {
+    "C:\\Users\\andrei.tuguiu\\Source\\Repos\\c--PaymentGateway\\PaymentGateway.Models\\PaymentGateway.Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Crazzy\\source\\repos\\c--PaymentGateway\\PaymentGateway.Models\\PaymentGateway.Models.csproj",
+        "projectUniqueName": "C:\\Users\\andrei.tuguiu\\Source\\Repos\\c--PaymentGateway\\PaymentGateway.Models\\PaymentGateway.Models.csproj",
         "projectName": "PaymentGateway.Models",
-        "projectPath": "C:\\Users\\Crazzy\\source\\repos\\c--PaymentGateway\\PaymentGateway.Models\\PaymentGateway.Models.csproj",
-        "packagesPath": "C:\\Users\\Crazzy\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Crazzy\\source\\repos\\c--PaymentGateway\\PaymentGateway.Models\\obj\\",
+        "projectPath": "C:\\Users\\andrei.tuguiu\\Source\\Repos\\c--PaymentGateway\\PaymentGateway.Models\\PaymentGateway.Models.csproj",
+        "packagesPath": "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\andrei.tuguiu\\Source\\Repos\\c--PaymentGateway\\PaymentGateway.Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Microsoft\\Xamarin\\NuGet\\"
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\Crazzy\\source\\repos\\c--PaymentGateway\\NuGet.Config",
-          "C:\\Users\\Crazzy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\andrei.tuguiu\\Source\\Repos\\c--PaymentGateway\\NuGet.Config",
+          "C:\\Users\\andrei.tuguiu\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -128,7 +128,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

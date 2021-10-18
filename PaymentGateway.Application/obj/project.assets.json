@@ -5893,24 +5893,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Crazzy\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Crazzy\\source\\repos\\c--PaymentGateway\\PaymentGateway.Application\\PaymentGateway.Application.csproj",
+      "projectUniqueName": "C:\\Users\\andrei.tuguiu\\Source\\Repos\\c--PaymentGateway\\PaymentGateway.Application\\PaymentGateway.Application.csproj",
       "projectName": "PaymentGateway.Application",
-      "projectPath": "C:\\Users\\Crazzy\\source\\repos\\c--PaymentGateway\\PaymentGateway.Application\\PaymentGateway.Application.csproj",
-      "packagesPath": "C:\\Users\\Crazzy\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Crazzy\\source\\repos\\c--PaymentGateway\\PaymentGateway.Application\\obj\\",
+      "projectPath": "C:\\Users\\andrei.tuguiu\\Source\\Repos\\c--PaymentGateway\\PaymentGateway.Application\\PaymentGateway.Application.csproj",
+      "packagesPath": "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\andrei.tuguiu\\Source\\Repos\\c--PaymentGateway\\PaymentGateway.Application\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\Crazzy\\source\\repos\\c--PaymentGateway\\NuGet.Config",
-        "C:\\Users\\Crazzy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\andrei.tuguiu\\Source\\Repos\\c--PaymentGateway\\NuGet.Config",
+        "C:\\Users\\andrei.tuguiu\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -5925,14 +5925,14 @@
         "net5.0": {
           "targetAlias": "net5.0",
           "projectReferences": {
-            "C:\\Users\\Crazzy\\source\\repos\\c--PaymentGateway\\Abstractions\\Abstractions.csproj": {
-              "projectPath": "C:\\Users\\Crazzy\\source\\repos\\c--PaymentGateway\\Abstractions\\Abstractions.csproj"
+            "C:\\Users\\andrei.tuguiu\\Source\\Repos\\c--PaymentGateway\\Abstractions\\Abstractions.csproj": {
+              "projectPath": "C:\\Users\\andrei.tuguiu\\Source\\Repos\\c--PaymentGateway\\Abstractions\\Abstractions.csproj"
             },
-            "C:\\Users\\Crazzy\\source\\repos\\c--PaymentGateway\\PaymentGateway.Data\\PaymentGateway.Data.csproj": {
-              "projectPath": "C:\\Users\\Crazzy\\source\\repos\\c--PaymentGateway\\PaymentGateway.Data\\PaymentGateway.Data.csproj"
+            "C:\\Users\\andrei.tuguiu\\Source\\Repos\\c--PaymentGateway\\PaymentGateway.Data\\PaymentGateway.Data.csproj": {
+              "projectPath": "C:\\Users\\andrei.tuguiu\\Source\\Repos\\c--PaymentGateway\\PaymentGateway.Data\\PaymentGateway.Data.csproj"
             },
-            "C:\\Users\\Crazzy\\source\\repos\\c--PaymentGateway\\PaymentGateway.PublishLanguage\\PaymentGateway.PublishedLanguage.csproj": {
-              "projectPath": "C:\\Users\\Crazzy\\source\\repos\\c--PaymentGateway\\PaymentGateway.PublishLanguage\\PaymentGateway.PublishedLanguage.csproj"
+            "C:\\Users\\andrei.tuguiu\\Source\\Repos\\c--PaymentGateway\\PaymentGateway.PublishLanguage\\PaymentGateway.PublishedLanguage.csproj": {
+              "projectPath": "C:\\Users\\andrei.tuguiu\\Source\\Repos\\c--PaymentGateway\\PaymentGateway.PublishLanguage\\PaymentGateway.PublishedLanguage.csproj"
             }
           }
         }
@@ -5979,7 +5979,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

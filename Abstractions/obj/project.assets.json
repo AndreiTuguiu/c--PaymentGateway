@@ -8,24 +8,24 @@
     "net5.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Crazzy\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
+    "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Crazzy\\Source\\Repos\\c--PaymentGateway\\Abstractions\\Abstractions.csproj",
+      "projectUniqueName": "C:\\Users\\andrei.tuguiu\\Source\\Repos\\c--PaymentGateway\\Abstractions\\Abstractions.csproj",
       "projectName": "Abstractions",
-      "projectPath": "C:\\Users\\Crazzy\\Source\\Repos\\c--PaymentGateway\\Abstractions\\Abstractions.csproj",
-      "packagesPath": "C:\\Users\\Crazzy\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Crazzy\\Source\\Repos\\c--PaymentGateway\\Abstractions\\obj\\",
+      "projectPath": "C:\\Users\\andrei.tuguiu\\Source\\Repos\\c--PaymentGateway\\Abstractions\\Abstractions.csproj",
+      "packagesPath": "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\andrei.tuguiu\\Source\\Repos\\c--PaymentGateway\\Abstractions\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\"
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\Crazzy\\Source\\Repos\\c--PaymentGateway\\NuGet.Config",
-        "C:\\Users\\Crazzy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\andrei.tuguiu\\Source\\Repos\\c--PaymentGateway\\NuGet.Config",
+        "C:\\Users\\andrei.tuguiu\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -66,7 +66,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }
