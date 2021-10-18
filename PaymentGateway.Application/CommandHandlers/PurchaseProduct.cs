@@ -50,25 +50,27 @@ namespace PaymentGateway.Application.CommandHandlers
 
             Transaction transaction = new Transaction
             {
+                AccountId = account.AccountId,
                 Amount = totalValue,
                 Currency = currency,
                 Date = DateTime.Now,
                 Type = TransactionType.PurchaseService,
-                TransactionId = _dbContext.Transactions.Count() + 1
             };
 
             _dbContext.Transactions.Add(transaction);
+            _dbContext.SaveChanges();
 
             account.Balance -= totalValue;
 
-            ProductXTransaction pxt = new ProductXTransaction
+            ProductXtransaction pxt = new ProductXtransaction
             {
                 TransactionId = transaction.TransactionId,
                 ProductId = request.ProductId,
-                Quantity = request.Quantity
+                Quantity = request.Quantity,
+                Currency= product.Currency
             };
 
-            _dbContext.ProductXTransactions.Add(pxt);
+            _dbContext.ProductXtransactions.Add(pxt);
 
             _dbContext.SaveChanges();
 

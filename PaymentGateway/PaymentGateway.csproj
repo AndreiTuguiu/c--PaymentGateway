@@ -24,4 +24,10 @@
 	<ProjectReference Include="..\PaymentGateway.WebApi\PaymentGateway.WebApi.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

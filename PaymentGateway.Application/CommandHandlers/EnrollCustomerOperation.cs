@@ -24,7 +24,7 @@ namespace PaymentGateway.Application.CommandHandlers
         {
             var person = new Person
             {
-                CNP = request.UniqueIdentifier,
+                Cnp = request.UniqueIdentifier,
                 Name = request.Name
             };
             if (request.ClientType == "Company")
@@ -39,13 +39,14 @@ namespace PaymentGateway.Application.CommandHandlers
             {
                 throw new Exception("Unsupport person type!");
             }
-
-            person.PersonId = _dbContext.Persons.Count() + 1;
+            
 
             _dbContext.Persons.Add(person);
+            _dbContext.SaveChanges();
 
             Account account = new Account
             {
+                PersonId = person.PersonId,
                 Type = AccountType.Current,
                 Currency = request.Currency,
                 Balance = 0,

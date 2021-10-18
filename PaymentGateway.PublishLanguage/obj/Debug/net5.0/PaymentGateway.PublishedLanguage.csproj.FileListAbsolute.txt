@@ -10,3 +10,15 @@ C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway.PublishLanguag
 C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway.PublishLanguage\obj\Debug\net5.0\PaymentGateway.PublishedLanguage.dll
 C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway.PublishLanguage\obj\Debug\net5.0\ref\PaymentGateway.PublishedLanguage.dll
 C:\Users\andrei.tuguiu\source\repos\PaymentGateway\PaymentGateway.PublishLanguage\obj\Debug\net5.0\PaymentGateway.PublishedLanguage.pdb
+C:\Users\andrei.tuguiu\Source\Repos\c--PaymentGateway\PaymentGateway.PublishLanguage\bin\Debug\net5.0\PaymentGateway.PublishedLanguage.deps.json
+C:\Users\andrei.tuguiu\Source\Repos\c--PaymentGateway\PaymentGateway.PublishLanguage\bin\Debug\net5.0\PaymentGateway.PublishedLanguage.dll
+C:\Users\andrei.tuguiu\Source\Repos\c--PaymentGateway\PaymentGateway.PublishLanguage\bin\Debug\net5.0\ref\PaymentGateway.PublishedLanguage.dll
+C:\Users\andrei.tuguiu\Source\Repos\c--PaymentGateway\PaymentGateway.PublishLanguage\bin\Debug\net5.0\PaymentGateway.PublishedLanguage.pdb
+C:\Users\andrei.tuguiu\Source\Repos\c--PaymentGateway\PaymentGateway.PublishLanguage\obj\Debug\net5.0\PaymentGateway.PublishedLanguage.csproj.AssemblyReference.cache
+C:\Users\andrei.tuguiu\Source\Repos\c--PaymentGateway\PaymentGateway.PublishLanguage\obj\Debug\net5.0\PaymentGateway.PublishedLanguage.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\andrei.tuguiu\Source\Repos\c--PaymentGateway\PaymentGateway.PublishLanguage\obj\Debug\net5.0\PaymentGateway.PublishedLanguage.AssemblyInfoInputs.cache
+C:\Users\andrei.tuguiu\Source\Repos\c--PaymentGateway\PaymentGateway.PublishLanguage\obj\Debug\net5.0\PaymentGateway.PublishedLanguage.AssemblyInfo.cs
+C:\Users\andrei.tuguiu\Source\Repos\c--PaymentGateway\PaymentGateway.PublishLanguage\obj\Debug\net5.0\PaymentGateway.PublishedLanguage.csproj.CoreCompileInputs.cache
+C:\Users\andrei.tuguiu\Source\Repos\c--PaymentGateway\PaymentGateway.PublishLanguage\obj\Debug\net5.0\PaymentGateway.PublishedLanguage.dll
+C:\Users\andrei.tuguiu\Source\Repos\c--PaymentGateway\PaymentGateway.PublishLanguage\obj\Debug\net5.0\ref\PaymentGateway.PublishedLanguage.dll
+C:\Users\andrei.tuguiu\Source\Repos\c--PaymentGateway\PaymentGateway.PublishLanguage\obj\Debug\net5.0\PaymentGateway.PublishedLanguage.pdb

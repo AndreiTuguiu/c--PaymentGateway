@@ -20,7 +20,7 @@ namespace PaymentGateway.Application.Queries
                 {
                     var person = query.PersonId.HasValue ?
                     _dbContext.Persons.FirstOrDefault(x => x.PersonId == query.PersonId) :
-                    _dbContext.Persons.FirstOrDefault(x => x.CNP == query.Cnp);
+                    _dbContext.Persons.FirstOrDefault(x => x.Cnp == query.Cnp);
 
                     return person != null;
                 }).WithMessage("Customer not found");
@@ -70,14 +70,14 @@ namespace PaymentGateway.Application.Queries
                
                 var person = request.PersonId.HasValue ?
                     _dbContext.Persons.FirstOrDefault(x => x.PersonId == request.PersonId) :
-                    _dbContext.Persons.FirstOrDefault(x => x.CNP == request.Cnp);
+                    _dbContext.Persons.FirstOrDefault(x => x.Cnp == request.Cnp);
 
                 if(person == null)
                 {
                     throw new Exception("person not found");
                 }
 
-                var db = _dbContext.Accounts.Where(x => x.PersondId == person.PersonId);
+                var db = _dbContext.Accounts.Where(x => x.PersonId == person.PersonId);
                 var result = db.Select(x => new Model
                 {
                     Balance = x.Balance,
@@ -96,13 +96,13 @@ namespace PaymentGateway.Application.Queries
         public class Model
         {
             public int AccountId { get; set; }
-            public int PersondId { get; set; }
+            public int PersonId { get; set; }
             public string IbanCode { get; set; }
             public double Balance { get; set; }
             public string Currency { get; set; }
             public AccountType Type { get; set; }
             public AccountStatus Status { get; set; }
-            public double Limit { get; set; }
+            public decimal Limit { get; set; }
         }
     }
 }

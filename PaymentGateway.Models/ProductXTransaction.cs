@@ -1,11 +1,19 @@
-﻿namespace PaymentGateway.Models
+﻿using System;
+using System.Collections.Generic;
+
+#nullable disable
+
+namespace PaymentGateway.Models
 {
-    public class ProductXTransaction
+    public partial class ProductXtransaction
     {
         public int ProductId { get; set; }
         public int TransactionId { get; set; }
-        public double Amount { get; set; }
+        public decimal Amount { get; set; }
         public string Currency { get; set; }
         public int Quantity { get; set; }
+
+        public virtual Product Product { get; set; }
+        public virtual Transaction Transaction { get; set; }
     }
 }

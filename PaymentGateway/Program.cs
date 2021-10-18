@@ -63,40 +63,39 @@ namespace PaymentGateway
             //var database = serviceProvider.GetRequiredService<PaymentDbContext>();
             var m = serviceProvider.GetRequiredService<IMediator>();
             // use
-            var command = new EnrollCustomerCommand
-            {
-                ClientType = "Individual",
-                AccountType = "Current",
-                Name = "YEP",
-                Currency = "RON",
-                UniqueIdentifier = "23",
-                IbanCode= "RO987654321"
-            };
+            //var command = new EnrollCustomerCommand
+            //{
+            //    ClientType = "Individual",
+            //    AccountType = "Current",
+            //    Name = "YEP2",
+            //    Currency = "RON",
+            //    UniqueIdentifier = "12345673113",
+            //    IbanCode= "RO981234521"
+            //};
 
             
            
-            await m.Send(command, cancellationToken);
+            //await m.Send(command, cancellationToken);
 
 
-            var createAccountCommand = new CreateAccountCommand
-            {
-                IbanCode="RO123456789",
-                PersonId= 1,
-                AccountType = "Investment",
-                Currency = "RON"
+            //var createAccountCommand = new CreateAccountCommand
+            //{
+            //    IbanCode="RO123456789",
+            //    PersonId= 1,
+            //    AccountType = "Investment",
+            //    Currency = "RON"
                 
-            };
+            //};
             
 
 
-            await m.Send(createAccountCommand, cancellationToken);
+            //await m.Send(createAccountCommand, cancellationToken);
 
 
             var depMonComm= new DepositMoneyCommand
             {
-                AccountId=2,
                 IbanConde = "RO123456789",
-                Amount = 10000,
+                Amount = 100,
                 Currency="RON"
             };
             
@@ -106,9 +105,8 @@ namespace PaymentGateway
 
             var withdraw = new WithdrawMoneyCommand
             {
-                AccountId = 2,
                 IbanConde = "RO123456789",
-                Amount = 3000,
+                Amount = 30,
                 Currency = "RON"
             };
 
@@ -117,38 +115,36 @@ namespace PaymentGateway
             await m.Send(withdraw, cancellationToken);
 
 
-            var createProduct = new CreateProductCommand
-            {
-                Name = "Adidasi",
-                ProductId = 0,
-                Value = 160,
-                Currency = "RON",
-                Limit = 4
-            };
+            //var createProduct = new CreateProductCommand
+            //{
+            //    Name = "Adidasi",
+            //    Value = 16,
+            //    Currency = "RON",
+            //    Limit = 4
+            //};
 
             
 
-            await m.Send(createProduct, cancellationToken);
+            //await m.Send(createProduct, cancellationToken);
 
 
-            var createProduct1 = new CreateProductCommand
-            {
-                Name = "Blugi",
-                ProductId = 1,
-                Value = 100,
-                Currency = "RON",
-                Limit = 3
-            };
+            //var createProduct1 = new CreateProductCommand
+            //{
+            //    Name = "Blugi",
+            //    Value = 10,
+            //    Currency = "RON",
+            //    Limit = 3
+            //};
 
             
 
-            await m.Send(createProduct1, cancellationToken);
+            //await m.Send(createProduct1, cancellationToken);
 
 
             var purchaseProductCommand = new PurchaseProductCommand
             {
-                AccountId = 0,
-                ProductId = 0,
+                AccountId = 7,
+                ProductId = 3,
                 Quantity = 3
             };
 

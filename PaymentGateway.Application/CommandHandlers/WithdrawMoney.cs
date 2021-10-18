@@ -53,7 +53,7 @@ namespace PaymentGateway.Application.CommandHandlers
 
             Transaction transaction = new Transaction
             {
-                TransactionId = _dbContext.Transactions.Count() + 1,
+                AccountId=account.AccountId,
                 Currency = request.Currency,
                 Amount = request.Amount,
                 Date = DateTime.Now,

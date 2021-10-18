@@ -54,7 +54,7 @@ namespace PaymentGateway.Application
             //services.AddTransient<DepositMoney>();
             //services.AddTransient<WithdrawMoney>();
             //services.AddTransient<PurchaseProduct>();
-            services.AddSingleton<Data.PaymentDbContext>();
+            services.AddSingleton<PaymentDbContext>();
 
             //services.AddTransient<IValidator<Query>, Validator>();
             

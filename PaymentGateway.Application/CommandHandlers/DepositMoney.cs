@@ -49,7 +49,7 @@ namespace PaymentGateway.Application.CommandHandlers
 
             Transaction transaction = new Transaction
             {
-                TransactionId = _dbContext.Transactions.Count() + 1,
+                AccountId=account.AccountId,
                 Currency = account.Currency,
                 Amount = request.Amount,
                 Type = TransactionType.Deposit,

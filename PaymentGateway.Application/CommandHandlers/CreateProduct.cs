@@ -22,7 +22,6 @@ namespace PaymentGateway.Application.CommandHandlers
         {
             Product product = new Product
             {
-                ProductId = request.ProductId,
                 Name = request.Name,
                 Value = request.Value,
                 Currency = request.Currency,

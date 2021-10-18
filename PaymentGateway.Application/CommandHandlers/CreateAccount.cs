@@ -8,6 +8,7 @@ using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 
+
 namespace PaymentGateway.Application.CommandHandlers
 {
     public class CreateAccount: IRequestHandler<CreateAccountCommand>
@@ -35,7 +36,7 @@ namespace PaymentGateway.Application.CommandHandlers
             }
             else
             {
-                person = _dbContext.Persons.FirstOrDefault(x => x.CNP == request.Cnp);
+                person = _dbContext.Persons.FirstOrDefault(x => x.Cnp == request.Cnp);
             }
             if (person == null)
             {
@@ -66,9 +67,8 @@ namespace PaymentGateway.Application.CommandHandlers
                     break;
             }
             account.Status = AccountStatus.Active;
-            account.PersondId = person.PersonId;
+            account.PersonId = person.PersonId;
 
-            account.AccountId = _dbContext.Accounts.Count() + 1;
 
             _dbContext.Accounts.Add(account);
 

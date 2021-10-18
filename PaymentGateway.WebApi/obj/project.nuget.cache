@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "1xu7llHWFMfCVa9HEFRZW8pNsXBbHZobEHP2l2XA8ohsk+1JXsAv9os/baVj2Urv97dC+7E3rqURTHSATaoF2g==",
+  "dgSpecHash": "p/4WHRPvtHkYV+LvCbOWSbjUxFlsAFpdS53uL+VWMFRwxc0Takfo+AYsBU67nkWL5H1YSo36s4kLaUNlI0lbtA==",
   "success": true,
   "projectFilePath": "C:\\Users\\andrei.tuguiu\\Source\\Repos\\c--PaymentGateway\\PaymentGateway.WebApi\\PaymentGateway.WebApi.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\automapper\\10.1.0\\automapper.10.1.0.nupkg.sha512",
     "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.0\\automapper.extensions.microsoft.dependencyinjection.8.1.0.nupkg.sha512",
     "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\fluentvalidation\\9.5.0\\fluentvalidation.9.5.0.nupkg.sha512",
+    "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\mediatr\\9.0.0\\mediatr.9.0.0.nupkg.sha512",
     "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\mediatr.extensions.microsoft.dependencyinjection\\9.0.0\\mediatr.extensions.microsoft.dependencyinjection.9.0.0.nupkg.sha512",
     "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\microsoft.azure.services.appauthentication\\1.4.0\\microsoft.azure.services.appauthentication.1.4.0.nupkg.sha512",
@@ -16,6 +17,7 @@
     "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\microsoft.entityframeworkcore\\5.0.2\\microsoft.entityframeworkcore.5.0.2.nupkg.sha512",
     "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\5.0.2\\microsoft.entityframeworkcore.abstractions.5.0.2.nupkg.sha512",
     "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\5.0.2\\microsoft.entityframeworkcore.analyzers.5.0.2.nupkg.sha512",
+    "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\microsoft.entityframeworkcore.design\\5.0.2\\microsoft.entityframeworkcore.design.5.0.2.nupkg.sha512",
     "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\5.0.2\\microsoft.entityframeworkcore.relational.5.0.2.nupkg.sha512",
     "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\5.0.2\\microsoft.entityframeworkcore.sqlserver.5.0.2.nupkg.sha512",
     "C:\\Users\\andrei.tuguiu\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
